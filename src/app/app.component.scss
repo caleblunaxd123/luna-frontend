@@ -1,0 +1,16 @@
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 70px; // Altura del header fijo
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    padding-top: 60px; // Altura del header en móvil
+  }
+}
