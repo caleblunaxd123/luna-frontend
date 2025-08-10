@@ -1,0 +1,8 @@
+[build]
+  publish = "dist/luna-frontend/browser"
+  command = "ng build --configuration=production --ssr=false"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
