@@ -1,0 +1,65 @@
+<!-- Burbuja de notificación -->
+@if (mostrarBurbuja && !abierto) {
+  <div class="chat-bubble" (click)="toggleChat()">
+    💬 ¿Necesitas un sistema o app? ¡Cotiza gratis!
+  </div>
+}
+
+<!-- Botón flotante -->
+<button class="chat-fab" (click)="toggleChat()" [class.open]="abierto" title="Chat con nosotros">
+  @if (!abierto) { 💬 } @else { ✕ }
+</button>
+
+<!-- Ventana del chat -->
+@if (abierto) {
+  <div class="chat-window">
+    <div class="chat-header">
+      <div class="chat-av">CL</div>
+      <div>
+        <div class="chat-title">Luna IT Solutions</div>
+        <div class="chat-status">🟢 En línea — responde en minutos</div>
+      </div>
+    </div>
+
+    <div class="chat-messages">
+      @for (m of mensajes; track $index) {
+        <div class="msg" [class.bot]="m.tipo==='bot'" [class.user]="m.tipo==='user'">
+          @if (m.tipo === 'bot') {
+            <div class="msg-av">CL</div>
+          }
+          <div class="msg-bubble">
+            <span [innerHTML]="formatear(m.texto)"></span>
+            @if (m.opciones && m.tipo === 'bot') {
+              <div class="opciones">
+                @for (op of m.opciones; track op) {
+                  <button class="opcion-btn"
+                    (click)="finalizado ? accionFinal(op) : seleccionarOpcion(op)">
+                    {{ op }}
+                  </button>
+                }
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="chat-input-area">
+      <input
+        [(ngModel)]="input"
+        (keydown)="onEnter($event)"
+        placeholder="Escribe tu respuesta..."
+        class="chat-input"/>
+      <button class="chat-send" (click)="enviarInput()">→</button>
+    </div>
+  </div>
+}
+
+<!-- Form oculto para que Netlify detecte el chatbot -->
+<form name="chatbot-cotizacion" netlify netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="chatbot-cotizacion"/>
+  <input name="nombre"/>
+  <input name="contacto"/>
+  <input name="proyecto"/>
+  <textarea name="resumen"></textarea>
+</form>

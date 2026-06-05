@@ -16,5 +16,15 @@
 </head>
 <body>
   <app-root></app-root>
+
+  <!-- Formularios estáticos para que Netlify los detecte en build -->
+  <form name="contacto-luna" netlify netlify-honeypot="bot-field" hidden>
+    <input name="nombre"/><input name="email"/><input name="telefono"/>
+    <input name="tipo"/><input name="presupuesto"/><textarea name="mensaje"></textarea>
+  </form>
+  <form name="chatbot-cotizacion" netlify netlify-honeypot="bot-field" hidden>
+    <input name="nombre"/><input name="contacto"/>
+    <input name="proyecto"/><textarea name="resumen"></textarea>
+  </form>
 </body>
 </html>
