@@ -16,6 +16,7 @@ export class PortfolioComponent {
 
   filtros = [
     { key: 'todos',      label: 'Todos'          },
+    { key: 'Plataforma', label: 'Plataformas'    },
     { key: 'Sistema',    label: 'Sistemas'        },
     { key: 'Template',   label: 'Templates'       },
     { key: 'API',        label: 'APIs'            },
@@ -24,6 +25,14 @@ export class PortfolioComponent {
   ];
 
   proyectos = [
+    // ── PROYECTOS REALES ──────────────────────────────────────────────────
+    { nombre: 'ChambaPe.pe — Plataforma de Empleos', tipo: 'Plataforma', icon: '💼',
+      gradient: 'linear-gradient(135deg,#f97316,#ea580c)',
+      desc: 'Plataforma de empleos para Perú: bolsa de trabajo, postulaciones, empresas, CV digital y notificaciones.',
+      stack: ['Angular', '.NET 8', 'SQL Server', 'SignalR'],
+      precio: 0,
+      url: 'https://www.chambape.pe' },
+    // ── SISTEMAS ─────────────────────────────────────────────────────────
     { nombre: 'Sistema ERP PYME', tipo: 'Sistema', icon: '🏢',
       gradient: 'linear-gradient(135deg,#6366f1,#8b5cf6)',
       desc: 'ERP completo: ventas, inventario, RRHH, contabilidad y facturación SUNAT.',

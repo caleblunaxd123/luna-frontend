@@ -31,8 +31,16 @@
               @for (s of p.stack; track s) { <span class="tech-pill">{{ s }}</span> }
             </div>
             <div class="pj-footer">
-              <span class="pj-price">desde <strong>${{ p.precio }} USD</strong></span>
-              <a routerLink="/contacto" class="btn-link">Quiero algo similar →</a>
+              @if (p.precio > 0) {
+                <span class="pj-price">desde <strong>${{ p.precio }} USD</strong></span>
+              } @else {
+                <span class="pj-price"><strong>Caso de éxito</strong></span>
+              }
+              @if (p.url) {
+                <a [href]="p.url" target="_blank" class="btn-link">Ver proyecto →</a>
+              } @else {
+                <a routerLink="/contacto" class="btn-link">Quiero algo similar →</a>
+              }
             </div>
           </div>
         </div>
