@@ -1,0 +1,20 @@
+<header class="header" [class.scrolled]="scrolled">
+  <div class="container nav-inner">
+    <a routerLink="/" class="logo">
+      <div class="logo-icon">L</div>
+      <span><b>Luna</b>IT<span class="dot">.</span></span>
+    </a>
+
+    <nav class="nav-links" [class.open]="menuOpen">
+      <a routerLink="/"          routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" (click)="menuOpen=false">Inicio</a>
+      <a routerLink="/servicios" routerLinkActive="active" (click)="menuOpen=false">Servicios</a>
+      <a routerLink="/portafolio" routerLinkActive="active" (click)="menuOpen=false">Portafolio</a>
+      <a routerLink="/nosotros"  routerLinkActive="active" (click)="menuOpen=false">Nosotros</a>
+      <a routerLink="/contacto"  class="btn btn-primary btn-sm" (click)="menuOpen=false">Contactar</a>
+    </nav>
+
+    <button class="hamburger" (click)="menuOpen=!menuOpen" [class.open]="menuOpen">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>

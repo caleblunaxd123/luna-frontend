@@ -1,11 +1,87 @@
-<div class="row">
-  <div class="col-md-4" *ngFor="let s of services">
-    <div class="card mb-3">
-      <div class="card-body">
-        <h5 class="card-title">{{ s.name }}</h5>
-        <p class="card-text">{{ s.description }}</p>
-        <p class="card-text"><strong>S/{{ s.price }}</strong></p>
-      </div>
+<app-header></app-header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="label">Lo que hacemos</div>
+    <h1>Servicios de <span class="gradient-text">software profesional</span></h1>
+    <p>Desde una API hasta un ERP completo — entregamos calidad real, sin shortcuts.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="label">Desarrollo a medida</div>
+      <h2>Cada proyecto es único</h2>
+      <p>No usamos plantillas genéricas. Cada sistema se diseña según tu negocio.</p>
+    </div>
+    <div class="grid-3">
+      @for (s of servicios; track s.titulo) {
+        <div class="svc-card">
+          <div class="svc-icon" [style.background]="s.bg">{{ s.icon }}</div>
+          <h3>{{ s.titulo }}</h3>
+          <p>{{ s.desc }}</p>
+          <ul class="svc-features">
+            @for (f of s.features; track f) { <li>✅ {{ f }}</li> }
+          </ul>
+          <div class="svc-tags">
+            @for (tag of s.tags; track tag) {
+              <span class="badge badge-purple">{{ tag }}</span>
+            }
+          </div>
+          <div class="svc-price">Desde <strong>{{ s.desde }}</strong></div>
+          <a routerLink="/contacto" class="svc-link">Cotizar →</a>
+        </div>
+      }
     </div>
   </div>
-</div>
+</section>
+
+<section class="section bg-light-section">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="label">Proceso de trabajo</div>
+      <h2>¿Cómo trabajamos?</h2>
+      <p>Un proceso claro y transparente de inicio a entrega.</p>
+    </div>
+    <div class="how-steps">
+      @for (s of pasos; track s.n) {
+        <div class="step">
+          <div class="step-num">{{ s.n }}</div>
+          <h3>{{ s.t }}</h3>
+          <p>{{ s.d }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="label">Stack tecnológico</div>
+      <h2>Tecnologías que dominamos</h2>
+    </div>
+    <div class="tech-grid">
+      @for (t of techs; track t.n) {
+        <div class="tech-item">
+          <div class="ti">{{ t.i }}</div>
+          <span>{{ t.n }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container text-center">
+    <h2>¿Tienes un proyecto en mente?</h2>
+    <p>Primera consulta gratuita. Respuesta en menos de 24 horas.</p>
+    <div class="cta-btns">
+      <a routerLink="/contacto" class="btn btn-white">Solicitar cotización</a>
+      <a href="https://wa.me/51999999999" target="_blank" class="btn btn-whatsapp">💬 WhatsApp directo</a>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>

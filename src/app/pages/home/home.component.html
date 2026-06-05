@@ -1,67 +1,213 @@
-<!-- HERO -->
-<section class="hero d-flex align-items-center text-center text-light" style="background: url('/assets/hero-bg.jpg') center/cover no-repeat; height: 100vh;">
-  <div class="container">
-    <h1 class="display-3 fw-bold">Bienvenido a <span class="text-primary">Luna IT Solutions</span></h1>
-    <p class="lead">Innovación, tecnología y soluciones a tu medida</p>
-    <a routerLink="/contacto" class="btn btn-primary btn-lg mt-3">Contáctanos</a>
+<app-header></app-header>
+
+<!-- ═══════════════════════════════════ HERO ═══════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="grid-pattern"></div>
+  </div>
+  <div class="container hero-inner">
+    <div class="hero-text fade-up">
+      <div class="label">🚀 Empresa de Software — Lima, Perú</div>
+      <h1>Transformamos ideas en <span class="gradient-text">software profesional</span></h1>
+      <p class="hero-sub">
+        Desarrollamos sistemas ERP, CRM, ecommerce y apps a medida con
+        <strong>Angular 19 + .NET 8 + SQL Server</strong>.
+        Código limpio, documentado y entregado a tiempo.
+      </p>
+      <div class="hero-actions">
+        <a routerLink="/portafolio" class="btn btn-primary">Ver portafolio →</a>
+        <a routerLink="/contacto"   class="btn btn-outline-white">Cotizar proyecto</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span>50+</span><small>Proyectos</small></div>
+        <div class="stat"><span>5+</span><small>Años exp.</small></div>
+        <div class="stat"><span>100%</span><small>Satisfacción</small></div>
+      </div>
+    </div>
+    <div class="hero-visual float">
+      <div class="code-card">
+        <div class="code-header">
+          <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+          <span class="file">App.cs — Luna IT Solutions</span>
+        </div>
+        <pre class="code-body"><span class="kw">public class</span> <span class="cl">LunaITSolutions</span>
+&#123;
+  <span class="kw">private readonly</span> <span class="cl">Stack</span> tecnologias = <span class="kw">new</span>()
+  &#123;
+    <span class="str">"Angular 19"</span>,
+    <span class="str">".NET 8 Web API"</span>,
+    <span class="str">"SQL Server + ADO.NET"</span>,
+    <span class="str">"Clean Architecture"</span>
+  &#125;;
+
+  <span class="kw">public</span> <span class="cl">Proyecto</span> Desarrollar(<span class="cl">Idea</span> idea) =&gt;
+    <span class="kw">new</span>() &#123; Calidad = <span class="str">"Premium"</span>,
+              Entrega = <span class="str">"On-Time"</span> &#125;;
+&#125;</pre>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="mouse"><div class="wheel"></div></div>
+    <span>Scroll</span>
   </div>
 </section>
 
-<!-- SOBRE NOSOTROS -->
-<section class="py-5">
+<!-- ═══════════════════════════════════ TECH STACK ═════════════════════════════ -->
+<section class="tech-bar">
+  <div class="container">
+    <p class="tech-label">Stack tecnológico</p>
+    <div class="tech-list">
+      @for (t of techs; track t.n) {
+        <div class="tech-item">
+          <span class="tech-icon">{{ t.i }}</span>
+          <span>{{ t.n }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════ SERVICIOS ══════════════════════════════ -->
+<section class="section" id="servicios">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="label">Nuestros servicios</div>
+      <h2>Todo lo que tu empresa necesita</h2>
+      <p>Desde una landing page hasta un ERP completo — entregamos calidad profesional.</p>
+    </div>
+    <div class="grid-3">
+      @for (s of servicios; track s.titulo) {
+        <div class="service-card">
+          <div class="svc-icon" [style.background]="s.bg">{{ s.icon }}</div>
+          <h3>{{ s.titulo }}</h3>
+          <p>{{ s.desc }}</p>
+          <div class="svc-tags">
+            @for (tag of s.tags; track tag) {
+              <span class="badge badge-purple">{{ tag }}</span>
+            }
+          </div>
+          <div class="svc-price">Desde <strong>{{ s.desde }}</strong></div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════ PORTFOLIO PREVIEW ══════════════════════ -->
+<section class="section bg-dark-section" id="portfolio">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="label label-light">Portafolio</div>
+      <h2 class="text-white">Proyectos recientes</h2>
+      <p class="text-white-50">Sistemas reales desarrollados y entregados a clientes.</p>
+    </div>
+    <div class="grid-3">
+      @for (p of portfolio; track p.nombre) {
+        <div class="portfolio-card">
+          <div class="pc-img" [style.background]="p.gradient">
+            <span>{{ p.icon }}</span>
+          </div>
+          <div class="pc-body">
+            <span class="badge badge-cyan">{{ p.tipo }}</span>
+            <h3>{{ p.nombre }}</h3>
+            <p>{{ p.desc }}</p>
+            <div class="pc-stack">
+              @for (st of p.stack; track st) {
+                <span class="tech-pill">{{ st }}</span>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+    <div class="text-center mt-4">
+      <a routerLink="/portafolio" class="btn btn-white">Ver todo el portafolio →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════ POR QUÉ ELEGIRNOS ═════════════════════ -->
+<section class="section" id="por-que">
+  <div class="container">
+    <div class="why-inner">
+      <div class="why-text fade-up">
+        <div class="label">¿Por qué elegirnos?</div>
+        <h2>Más que código — somos tu socio tecnológico</h2>
+        <p>No solo entregamos software, entregamos soluciones que crecen con tu empresa.</p>
+        <div class="why-list">
+          @for (w of porQue; track w.t) {
+            <div class="why-item">
+              <div class="wi-icon">{{ w.i }}</div>
+              <div><strong>{{ w.t }}</strong><br><span>{{ w.d }}</span></div>
+            </div>
+          }
+        </div>
+        <a routerLink="/contacto" class="btn btn-primary mt-3">Empezar proyecto →</a>
+      </div>
+      <div class="why-visual">
+        <div class="testimonial-stack">
+          @for (t of testimonials; track t.n) {
+            <div class="testi">
+              <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+              <p>"{{ t.t }}"</p>
+              <div class="testi-author">
+                <div class="testi-av" [style.background]="t.c">{{ t.n[0] }}</div>
+                <div><strong>{{ t.n }}</strong><br><small>{{ t.empresa }}</small></div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════ PRECIOS ════════════════════════════════ -->
+<section class="section bg-light-section" id="precios">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="label">Precios</div>
+      <h2>Planes claros y transparentes</h2>
+      <p>Sin costos ocultos. Precios en USD — pagos en soles disponibles.</p>
+    </div>
+    <div class="grid-3">
+      @for (plan of planes; track plan.nombre) {
+        <div class="price-card" [class.featured]="plan.featured">
+          @if (plan.featured) { <div class="pc-badge">Más popular</div> }
+          <div class="plan-name">{{ plan.nombre }}</div>
+          <div class="plan-price"><span>$</span>{{ plan.precio }}<small>/proyecto</small></div>
+          <p class="plan-desc">{{ plan.desc }}</p>
+          <ul class="plan-features">
+            @for (f of plan.features; track f) {
+              <li>✅ {{ f }}</li>
+            }
+          </ul>
+          <a routerLink="/contacto" class="btn" [class.btn-primary]="plan.featured" [class.btn-outline]="!plan.featured">
+            Contratar →
+          </a>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════ CTA ════════════════════════════════════ -->
+<section class="cta-section">
   <div class="container text-center">
-    <h2 class="fw-bold">Sobre Nosotros</h2>
-    <p class="mt-3 text-muted">Somos una empresa dedicada a ofrecer soluciones tecnológicas innovadoras que impulsan el crecimiento de nuestros clientes.</p>
-  </div>
-</section>
-
-<!-- SERVICIOS -->
-<section class="py-5 bg-light">
-  <div class="container">
-    <h2 class="text-center fw-bold mb-4">Nuestros Servicios</h2>
-    <div class="row g-4">
-      <div class="col-md-4 text-center">
-        <i class="bi bi-code-slash display-4 text-primary"></i>
-        <h5 class="mt-3">Desarrollo Web</h5>
-        <p class="text-muted">Creamos páginas modernas, rápidas y seguras.</p>
-      </div>
-      <div class="col-md-4 text-center">
-        <i class="bi bi-phone display-4 text-primary"></i>
-        <h5 class="mt-3">Apps Móviles</h5>
-        <p class="text-muted">Aplicaciones nativas y multiplataforma.</p>
-      </div>
-      <div class="col-md-4 text-center">
-        <i class="bi bi-shield-lock display-4 text-primary"></i>
-        <h5 class="mt-3">Seguridad y Hosting</h5>
-        <p class="text-muted">Protege tus datos y mantén tu web siempre activa.</p>
-      </div>
+    <h2>¿Tienes un proyecto en mente?</h2>
+    <p>Respuesta en menos de 24 horas. Primera consulta <strong>100% gratis</strong>.</p>
+    <div class="cta-actions">
+      <a routerLink="/contacto" class="btn btn-white">Cotizar ahora</a>
+      <a href="https://wa.me/51999999999?text=Hola%20Luna%20IT%20Solutions%2C%20tengo%20un%20proyecto"
+         target="_blank" class="btn btn-whatsapp">
+        💬 WhatsApp directo
+      </a>
     </div>
+    <p class="cta-sub">calebluna41&#64;gmail.com &nbsp;·&nbsp; Lima, Perú 🇵🇪</p>
   </div>
 </section>
 
-<!-- PROYECTOS -->
-<section class="py-5">
-  <div class="container">
-    <h2 class="text-center fw-bold mb-4">Proyectos Recientes</h2>
-    <div class="row g-4">
-      <div class="col-md-4">
-        <img src="/assets/proyecto1.jpg" class="img-fluid rounded shadow" alt="Proyecto 1">
-      </div>
-      <div class="col-md-4">
-        <img src="/assets/proyecto2.jpg" class="img-fluid rounded shadow" alt="Proyecto 2">
-      </div>
-      <div class="col-md-4">
-        <img src="/assets/proyecto3.jpg" class="img-fluid rounded shadow" alt="Proyecto 3">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="py-5 bg-primary text-light text-center">
-  <div class="container">
-    <h3 class="fw-bold">¿Listo para impulsar tu negocio?</h3>
-    <p>Contáctanos hoy mismo y hagamos realidad tus ideas.</p>
-    <a routerLink="/contacto" class="btn btn-light btn-lg">Hablemos</a>
-  </div>
-</section>
+<app-footer></app-footer>

@@ -1,1 +1,52 @@
-<p>portfolio works!</p>
+<app-header></app-header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="label">Nuestro trabajo</div>
+    <h1>Portafolio de <span class="gradient-text">proyectos</span></h1>
+    <p>Sistemas reales desarrollados para empresas en Perú y LATAM.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="filtros">
+      @for (f of filtros; track f.key) {
+        <button class="filtro-btn" [class.active]="filtroActivo===f.key" (click)="filtroActivo=f.key">
+          {{ f.label }} <span class="count">{{ contarPorFiltro(f.key) }}</span>
+        </button>
+      }
+    </div>
+    <div class="portfolio-grid">
+      @for (p of proyectosFiltrados; track p.nombre) {
+        <div class="pj-card">
+          <div class="pj-preview" [style.background]="p.gradient">
+            <span class="pj-icon">{{ p.icon }}</span>
+            <div class="pj-overlay"><span class="badge badge-cyan">{{ p.tipo }}</span></div>
+          </div>
+          <div class="pj-body">
+            <h3>{{ p.nombre }}</h3>
+            <p>{{ p.desc }}</p>
+            <div class="pj-stack">
+              @for (s of p.stack; track s) { <span class="tech-pill">{{ s }}</span> }
+            </div>
+            <div class="pj-footer">
+              <span class="pj-price">desde <strong>${{ p.precio }} USD</strong></span>
+              <a routerLink="/contacto" class="btn-link">Quiero algo similar →</a>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+    <div class="portfolio-cta text-center">
+      <h2>¿Necesitas algo similar?</h2>
+      <p>Cuéntanos qué necesitas y te damos una propuesta en 24h.</p>
+      <div class="cta-btns">
+        <a routerLink="/contacto" class="btn btn-primary">Solicitar cotización</a>
+        <a href="https://wa.me/51999999999" target="_blank" class="btn btn-whatsapp">💬 WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>
