@@ -3,11 +3,18 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { HeaderComponent } from '../../shared/components/header.component';
 import { FooterComponent } from '../../footer/footer.component';
+import { RevealDirective } from '../../shared/reveal.directive';
+
+interface Caso {
+  titulo: string; area: string; icon: string; tint: string;
+  antes: string; solucion: string; resultado: string;
+  metric: string; kpi: string; tags: string[];
+}
 
 @Component({
   selector: 'app-portfolio',
   standalone: true,
-  imports: [CommonModule, RouterLink, HeaderComponent, FooterComponent],
+  imports: [CommonModule, RouterLink, HeaderComponent, FooterComponent, RevealDirective],
   templateUrl: './portfolio.component.html',
   styleUrls: ['./portfolio.component.scss']
 })
@@ -15,82 +22,80 @@ export class PortfolioComponent {
   filtroActivo = 'todos';
 
   filtros = [
-    { key: 'todos',      label: 'Todos'          },
-    { key: 'Plataforma', label: 'Plataformas'    },
-    { key: 'Sistema',    label: 'Sistemas'        },
-    { key: 'Template',   label: 'Templates'       },
-    { key: 'API',        label: 'APIs'            },
-    { key: 'Ecommerce',  label: 'Ecommerce'       },
-    { key: 'Consultoría',label: 'Consultoría'     },
+    { key: 'todos',       label: 'Todos' },
+    { key: 'Atención',    label: 'Atención' },
+    { key: 'Ventas',      label: 'Ventas' },
+    { key: 'Operaciones', label: 'Operaciones' },
+    { key: 'Finanzas',    label: 'Finanzas' },
+    { key: 'RRHH',        label: 'RRHH' },
   ];
 
-  proyectos = [
-    // ── PROYECTOS REALES ──────────────────────────────────────────────────
-    { nombre: 'ChambaPe.pe — Plataforma de Empleos', tipo: 'Plataforma', icon: '💼',
-      gradient: 'linear-gradient(135deg,#f97316,#ea580c)',
-      desc: 'Plataforma de empleos para Perú: bolsa de trabajo, postulaciones, empresas, CV digital y notificaciones.',
-      stack: ['Angular', '.NET 8', 'SQL Server', 'SignalR'],
-      precio: 0,
-      url: 'https://www.chambape.pe' },
-    // ── SISTEMAS ─────────────────────────────────────────────────────────
-    { nombre: 'Sistema ERP PYME', tipo: 'Sistema', icon: '🏢',
-      gradient: 'linear-gradient(135deg,#6366f1,#8b5cf6)',
-      desc: 'ERP completo: ventas, inventario, RRHH, contabilidad y facturación SUNAT.',
-      stack: ['Angular 19', '.NET 8', 'SQL Server', 'ADO.NET'], precio: 1200 },
-    { nombre: 'Sistema Clínica Médica', tipo: 'Sistema', icon: '🏥',
-      gradient: 'linear-gradient(135deg,#06b6d4,#0891b2)',
-      desc: 'Historia clínica digital, agendamiento, recetas y facturación para clínicas.',
-      stack: ['Angular', '.NET 8', 'SQL Server', 'PDF'], precio: 1500 },
-    { nombre: 'Ecommerce B2B Completo', tipo: 'Ecommerce', icon: '🛒',
-      gradient: 'linear-gradient(135deg,#10b981,#059669)',
-      desc: 'Tienda B2B con catálogo, carrito, Stripe/PayPal y panel admin.',
-      stack: ['Angular', 'Stripe', '.NET 8', 'SQL Server'], precio: 1000 },
-    { nombre: 'CRM Inmobiliaria', tipo: 'Sistema', icon: '🏠',
-      gradient: 'linear-gradient(135deg,#f59e0b,#d97706)',
-      desc: 'Propiedades, clientes, visitas, comisiones y reportes de ventas.',
-      stack: ['Angular', '.NET 8', 'SQL Server'], precio: 800 },
-    { nombre: 'Angular Admin Pro', tipo: 'Template', icon: '📊',
-      gradient: 'linear-gradient(135deg,#8b5cf6,#7c3aed)',
-      desc: 'Dashboard admin profesional: KPIs, CRUD, gráficos y reportes.',
-      stack: ['Angular 19', 'PrimeNG', 'Chart.js'], precio: 49 },
-    { nombre: 'API Clean Architecture', tipo: 'API', icon: '🔌',
-      gradient: 'linear-gradient(135deg,#0f172a,#1e293b)',
-      desc: 'Boilerplate .NET 8 con JWT, Clean Architecture, Swagger y ADO.NET.',
-      stack: ['.NET 8', 'JWT', 'Swagger', 'SQL Server'], precio: 39 },
-    { nombre: 'Sistema Logística GPS', tipo: 'Sistema', icon: '🚚',
-      gradient: 'linear-gradient(135deg,#ef4444,#dc2626)',
-      desc: 'Tracking de repartos, gestión de rutas y dashboard en tiempo real.',
-      stack: ['Angular', 'SignalR', '.NET 8', 'Google Maps'], precio: 1200 },
-    { nombre: 'LMS Educativo', tipo: 'Sistema', icon: '📚',
-      gradient: 'linear-gradient(135deg,#a855f7,#9333ea)',
-      desc: 'Cursos en video, evaluaciones, certificados automáticos y progreso.',
-      stack: ['Angular', '.NET 8', 'SQL Server', 'Video'], precio: 900 },
-    { nombre: 'SaaS Starter Kit', tipo: 'Template', icon: '🚀',
-      gradient: 'linear-gradient(135deg,#0ea5e9,#0284c7)',
-      desc: 'Kit SaaS completo: auth, roles, billing Stripe y onboarding.',
-      stack: ['Angular', '.NET 8', 'Stripe', 'SQL Server'], precio: 129 },
-    { nombre: 'Sistema POS Retail', tipo: 'Sistema', icon: '🏪',
-      gradient: 'linear-gradient(135deg,#f97316,#ea580c)',
-      desc: 'Punto de venta: caja, turnos, productos, descuentos y cierre de día.',
-      stack: ['Angular', '.NET 8', 'SQL Server'], precio: 800 },
-    { nombre: 'Consultoría Arquitectura', tipo: 'Consultoría', icon: '🔧',
-      gradient: 'linear-gradient(135deg,#475569,#334155)',
-      desc: 'Code review, refactorización y migración de sistemas legados a .NET 8.',
-      stack: ['Clean Architecture', 'SOLID', '.NET 8', 'Docker'], precio: 0 },
-    { nombre: 'App Reservas Online', tipo: 'Sistema', icon: '📅',
-      gradient: 'linear-gradient(135deg,#14b8a6,#0d9488)',
-      desc: 'Reservas con calendario, notificaciones y pagos integrados.',
-      stack: ['Angular', '.NET 8', 'SQL Server', 'Stripe'], precio: 700 },
+  casos: Caso[] = [
+    {
+      titulo: 'Logística — clasificación de solicitudes', area: 'Operaciones', icon: '🚚', tint: 'violet',
+      antes: '5 horas diarias leyendo y clasificando correos de solicitudes a mano.',
+      solucion: 'Un agente IA lee cada correo, lo clasifica, responde y genera la tarea automáticamente.',
+      resultado: 'El equipo dejó de operar correos y pasó a supervisar excepciones.',
+      metric: '90%', kpi: 'menos tiempo operativo', tags: ['Email', 'IA', 'Workflow'],
+    },
+    {
+      titulo: 'Retail — atención y pedidos por WhatsApp', area: 'Atención', icon: '🛍️', tint: 'cyan',
+      antes: 'Consultas de stock y pedidos saturaban al equipo en horas pico.',
+      solucion: 'Empleado digital que atiende en WhatsApp, consulta inventario y toma pedidos.',
+      resultado: 'Atención inmediata las 24 horas, sin filas ni clientes sin respuesta.',
+      metric: '24/7', kpi: 'atención sin pausas', tags: ['WhatsApp', 'Inventario'],
+    },
+    {
+      titulo: 'Servicios — captación de leads nocturnos', area: 'Ventas', icon: '🎯', tint: 'pink',
+      antes: 'Leads que llegaban de noche se respondían recién al día siguiente.',
+      solucion: 'Agente de ventas que responde, califica y agenda en menos de un minuto.',
+      resultado: 'Cero leads fríos: cada contacto recibe respuesta al instante.',
+      metric: '+35%', kpi: 'más conversión', tags: ['CRM', 'Calendario'],
+    },
+    {
+      titulo: 'Finanzas — cobranza automatizada', area: 'Finanzas', icon: '💳', tint: 'green',
+      antes: 'Seguimiento manual e irregular de pagos vencidos, siempre tarde.',
+      solucion: 'Recordatorios inteligentes por etapas y conciliación automática de pagos.',
+      resultado: 'Cobranza constante y predecible sin esfuerzo del equipo.',
+      metric: '40%', kpi: 'menos días de cobro', tags: ['ERP', 'WhatsApp'],
+    },
+    {
+      titulo: 'Contabilidad — lectura de comprobantes', area: 'Operaciones', icon: '🧾', tint: 'amber',
+      antes: 'Digitación manual de facturas con errores y cierres atrasados.',
+      solucion: 'La IA lee documentos, extrae los datos y los carga clasificados al sistema.',
+      resultado: 'Cierres contables sin cuellos de botella y con menos errores.',
+      metric: '90%', kpi: 'menos digitación', tags: ['OCR', 'IA', 'ERP'],
+    },
+    {
+      titulo: 'RRHH — preselección de candidatos', area: 'RRHH', icon: '👥', tint: 'violet',
+      antes: 'Filtrar decenas de CVs por vacante consumía días del equipo.',
+      solucion: 'IA preselecciona según criterios, agenda entrevistas y responde dudas.',
+      resultado: 'Procesos de contratación mucho más rápidos y enfocados.',
+      metric: '3x', kpi: 'más rápido contratar', tags: ['ATS', 'Email'],
+    },
+    {
+      titulo: 'Soporte — base de conocimiento viva', area: 'Atención', icon: '💬', tint: 'cyan',
+      antes: 'El soporte respondía las mismas preguntas una y otra vez.',
+      solucion: 'Agente que responde con tu documentación y escala solo lo complejo.',
+      resultado: 'Tickets resueltos al instante y equipo libre para casos reales.',
+      metric: '80%', kpi: 'tickets autoresueltos', tags: ['Help Desk', 'IA'],
+    },
+    {
+      titulo: 'Gerencia — dashboard que responde', area: 'Operaciones', icon: '📊', tint: 'green',
+      antes: 'Reportes armados a mano que llegaban tarde y sin contexto.',
+      solucion: 'Dashboard con IA que analiza, alerta riesgos y responde preguntas.',
+      resultado: 'Decisiones con datos en tiempo real, sin esperar al área de TI.',
+      metric: 'Tiempo real', kpi: 'visibilidad total', tags: ['BI', 'IA'],
+    },
   ];
 
-  get proyectosFiltrados() {
+  get casosFiltrados(): Caso[] {
     return this.filtroActivo === 'todos'
-      ? this.proyectos
-      : this.proyectos.filter(p => p.tipo === this.filtroActivo);
+      ? this.casos
+      : this.casos.filter(c => c.area === this.filtroActivo);
   }
 
   contarPorFiltro(key: string): number {
-    return key === 'todos' ? this.proyectos.length
-      : this.proyectos.filter(p => p.tipo === key).length;
+    return key === 'todos' ? this.casos.length : this.casos.filter(c => c.area === key).length;
   }
 }

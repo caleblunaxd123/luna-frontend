@@ -1,0 +1,12 @@
+[build]
+  command = "ng build --configuration=netlify"
+  publish = "dist/luna-frontend/browser"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# SPA fallback — el enrutado lo maneja Angular
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

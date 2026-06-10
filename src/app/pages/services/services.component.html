@@ -2,54 +2,46 @@
 
 <section class="page-hero">
   <div class="container">
-    <div class="label">Lo que hacemos</div>
-    <h1>Servicios de <span class="gradient-text">software profesional</span></h1>
-    <p>Desde una API hasta un ERP completo — entregamos calidad real, sin shortcuts.</p>
+    <div class="eyebrow"><span class="dot"></span> Soluciones</div>
+    <h1>Sistemas inteligentes que <span class="gradient-text">trabajan por tu empresa</span></h1>
+    <p class="lead" style="margin:1.2rem auto 0;">
+      Cuatro líneas para convertir procesos manuales en operaciones autónomas impulsadas por IA.
+    </p>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
-    <div class="text-center mb-5">
-      <div class="label">Desarrollo a medida</div>
-      <h2>Cada proyecto es único</h2>
-      <p>No usamos plantillas genéricas. Cada sistema se diseña según tu negocio.</p>
-    </div>
-    <div class="grid-3">
-      @for (s of servicios; track s.titulo) {
-        <div class="svc-card">
-          <div class="svc-icon" [style.background]="s.bg">{{ s.icon }}</div>
+    <div class="grid-2">
+      @for (s of soluciones; track s.titulo; let i = $index) {
+        <article class="sol-card glass reveal" [class.d1]="i % 2 === 1" appReveal>
+          <div class="sol-icon" [attr.data-tint]="s.tint">{{ s.icon }}</div>
           <h3>{{ s.titulo }}</h3>
           <p>{{ s.desc }}</p>
-          <ul class="svc-features">
-            @for (f of s.features; track f) { <li>✅ {{ f }}</li> }
+          <ul class="sol-features">
+            @for (f of s.features; track f) { <li>{{ f }}</li> }
           </ul>
-          <div class="svc-tags">
-            @for (tag of s.tags; track tag) {
-              <span class="badge badge-purple">{{ tag }}</span>
-            }
+          <div class="sol-tags">
+            @for (t of s.tags; track t) { <span class="tech-pill">{{ t }}</span> }
           </div>
-          <div class="svc-price">Desde <strong>{{ s.desde }}</strong></div>
-          <a routerLink="/contacto" class="svc-link">Cotizar →</a>
-        </div>
+        </article>
       }
     </div>
   </div>
 </section>
 
-<section class="section bg-light-section">
+<section class="section beneficios-section">
   <div class="container">
-    <div class="text-center mb-5">
-      <div class="label">Proceso de trabajo</div>
-      <h2>¿Cómo trabajamos?</h2>
-      <p>Un proceso claro y transparente de inicio a entrega.</p>
+    <div class="section-head reveal" appReveal>
+      <div class="eyebrow"><span class="dot"></span> Beneficios para tu empresa</div>
+      <h2>Lo que cambia cuando la IA <span class="gradient-text">entra a operar</span></h2>
     </div>
-    <div class="how-steps">
-      @for (s of pasos; track s.n) {
-        <div class="step">
-          <div class="step-num">{{ s.n }}</div>
-          <h3>{{ s.t }}</h3>
-          <p>{{ s.d }}</p>
+    <div class="grid-3">
+      @for (b of beneficios; track b.t; let i = $index) {
+        <div class="ben-card reveal" [class]="'d' + (i % 3)" appReveal>
+          <div class="ben-icon">{{ b.icon }}</div>
+          <h3>{{ b.t }}</h3>
+          <p>{{ b.d }}</p>
         </div>
       }
     </div>
@@ -58,15 +50,16 @@
 
 <section class="section">
   <div class="container">
-    <div class="text-center mb-5">
-      <div class="label">Stack tecnológico</div>
-      <h2>Tecnologías que dominamos</h2>
+    <div class="section-head reveal" appReveal>
+      <div class="eyebrow"><span class="dot"></span> Proceso de implementación</div>
+      <h2>De proceso manual a sistema autónomo</h2>
     </div>
-    <div class="tech-grid">
-      @for (t of techs; track t.n) {
-        <div class="tech-item">
-          <div class="ti">{{ t.i }}</div>
-          <span>{{ t.n }}</span>
+    <div class="proceso-grid">
+      @for (p of proceso; track p.n; let i = $index) {
+        <div class="proceso-step reveal" [class]="'d' + i" appReveal>
+          <span class="ps-num">{{ p.n }}</span>
+          <h3>{{ p.t }}</h3>
+          <p>{{ p.d }}</p>
         </div>
       }
     </div>
@@ -74,12 +67,15 @@
 </section>
 
 <section class="cta-section">
-  <div class="container text-center">
-    <h2>¿Tienes un proyecto en mente?</h2>
-    <p>Primera consulta gratuita. Respuesta en menos de 24 horas.</p>
-    <div class="cta-btns">
-      <a routerLink="/contacto" class="btn btn-white">Solicitar cotización</a>
-      <a href="https://wa.me/51922307301" target="_blank" class="btn btn-whatsapp">💬 WhatsApp directo</a>
+  <div class="container">
+    <div class="cta-card glass reveal" appReveal>
+      <div class="cta-glow"></div>
+      <h2>¿Por dónde empezamos?</h2>
+      <p class="lead" style="margin:1rem auto 0;">Solicita tu diagnóstico de automatización gratuito y te mostramos las oportunidades reales en tu operación.</p>
+      <div class="cta-actions">
+        <a routerLink="/contacto" class="btn btn-primary btn-lg">Solicitar Diagnóstico</a>
+        <a routerLink="/portafolio" class="btn btn-ghost btn-lg">Ver Casos de Uso →</a>
+      </div>
     </div>
   </div>
 </section>

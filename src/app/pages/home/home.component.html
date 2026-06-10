@@ -1,212 +1,294 @@
 <app-header></app-header>
 
-<!-- ═══════════════════════════════════ HERO ═══════════════════════════════════ -->
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
 <section class="hero">
-  <div class="hero-bg">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="grid-pattern"></div>
-  </div>
   <div class="container hero-inner">
-    <div class="hero-text fade-up">
-      <div class="label">🚀 Empresa de Software — Lima, Perú</div>
-      <h1>Transformamos ideas en <span class="gradient-text">software profesional</span></h1>
-      <p class="hero-sub">
-        Desarrollamos sistemas ERP, CRM, ecommerce y apps a medida con
-        <strong>Angular 19 + .NET 8 + SQL Server</strong>.
-        Código limpio, documentado y entregado a tiempo.
+    <div class="hero-text">
+      <div class="eyebrow"><span class="dot"></span> Inteligencia Artificial para empresas · LATAM</div>
+      <h1>Aplicaciones Inteligentes y <span class="gradient-text">Empleados Digitales</span> para empresas que quieren escalar</h1>
+      <p class="lead hero-sub">
+        Diseñamos soluciones impulsadas por IA que automatizan procesos,
+        reducen costos operativos y trabajan <strong>24/7</strong> para tu empresa.
       </p>
       <div class="hero-actions">
-        <a routerLink="/portafolio" class="btn btn-primary">Ver portafolio →</a>
-        <a routerLink="/contacto"   class="btn btn-outline-white">Cotizar proyecto</a>
+        <a routerLink="/contacto" class="btn btn-primary btn-lg">Solicitar Diagnóstico Gratuito</a>
+        <a routerLink="/portafolio" class="btn btn-ghost btn-lg">Ver Casos de Uso →</a>
       </div>
-      <div class="hero-stats">
-        <div class="stat"><span>50+</span><small>Proyectos</small></div>
-        <div class="stat"><span>5+</span><small>Años exp.</small></div>
-        <div class="stat"><span>100%</span><small>Satisfacción</small></div>
-      </div>
-    </div>
-    <div class="hero-visual float">
-      <div class="code-card">
-        <div class="code-header">
-          <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
-          <span class="file">App.cs — Luna IT Solutions</span>
-        </div>
-        <pre class="code-body"><span class="kw">public class</span> <span class="cl">LunaITSolutions</span>
-&#123;
-  <span class="kw">private readonly</span> <span class="cl">Stack</span> tecnologias = <span class="kw">new</span>()
-  &#123;
-    <span class="str">"Angular 19"</span>,
-    <span class="str">".NET 8 Web API"</span>,
-    <span class="str">"SQL Server + ADO.NET"</span>,
-    <span class="str">"Clean Architecture"</span>
-  &#125;;
-
-  <span class="kw">public</span> <span class="cl">Proyecto</span> Desarrollar(<span class="cl">Idea</span> idea) =&gt;
-    <span class="kw">new</span>() &#123; Calidad = <span class="str">"Premium"</span>,
-              Entrega = <span class="str">"On-Time"</span> &#125;;
-&#125;</pre>
+      <div class="hero-trust">
+        <span>✓ Sin reemplazar tus sistemas actuales</span>
+        <span>✓ Implementación medible</span>
       </div>
     </div>
-  </div>
-  <div class="scroll-hint">
-    <div class="mouse"><div class="wheel"></div></div>
-    <span>Scroll</span>
-  </div>
-</section>
 
-<!-- ═══════════════════════════════════ TECH STACK ═════════════════════════════ -->
-<section class="tech-bar">
-  <div class="container">
-    <p class="tech-label">Stack tecnológico</p>
-    <div class="tech-list">
-      @for (t of techs; track t.n) {
-        <div class="tech-item">
-          <span class="tech-icon">{{ t.i }}</span>
-          <span>{{ t.n }}</span>
+    <!-- Futuristic dashboard mock -->
+    <div class="hero-visual">
+      <div class="dash glass float-slow">
+        <div class="dash-top">
+          <div class="dash-dots"><i></i><i></i><i></i></div>
+          <span class="dash-title">Luna · Centro de Operaciones IA</span>
+          <span class="live"><i></i> en vivo</span>
         </div>
-      }
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════ SERVICIOS ══════════════════════════════ -->
-<section class="section" id="servicios">
-  <div class="container">
-    <div class="text-center mb-5">
-      <div class="label">Nuestros servicios</div>
-      <h2>Todo lo que tu empresa necesita</h2>
-      <p>Desde una landing page hasta un ERP completo — entregamos calidad profesional.</p>
-    </div>
-    <div class="grid-3">
-      @for (s of servicios; track s.titulo) {
-        <div class="service-card">
-          <div class="svc-icon" [style.background]="s.bg">{{ s.icon }}</div>
-          <h3>{{ s.titulo }}</h3>
-          <p>{{ s.desc }}</p>
-          <div class="svc-tags">
-            @for (tag of s.tags; track tag) {
-              <span class="badge badge-purple">{{ tag }}</span>
-            }
-          </div>
-          <div class="svc-price">Desde <strong>{{ s.desde }}</strong></div>
-        </div>
-      }
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════ PORTFOLIO PREVIEW ══════════════════════ -->
-<section class="section bg-dark-section" id="portfolio">
-  <div class="container">
-    <div class="text-center mb-5">
-      <div class="label label-light">Portafolio</div>
-      <h2 class="text-white">Proyectos recientes</h2>
-      <p class="text-white-50">Sistemas reales desarrollados y entregados a clientes.</p>
-    </div>
-    <div class="grid-3">
-      @for (p of portfolio; track p.nombre) {
-        <div class="portfolio-card">
-          <div class="pc-img" [style.background]="p.gradient">
-            <span>{{ p.icon }}</span>
-          </div>
-          <div class="pc-body">
-            <span class="badge badge-cyan">{{ p.tipo }}</span>
-            <h3>{{ p.nombre }}</h3>
-            <p>{{ p.desc }}</p>
-            <div class="pc-stack">
-              @for (st of p.stack; track st) {
-                <span class="tech-pill">{{ st }}</span>
-              }
+        <div class="dash-body">
+          <div class="metrics">
+            <div class="metric">
+              <span class="m-label">Tareas automatizadas</span>
+              <span class="m-val"><span [appCountUp]="14820" suffix=""></span></span>
+              <span class="m-trend up">↑ 18% hoy</span>
+            </div>
+            <div class="metric">
+              <span class="m-label">Horas ahorradas</span>
+              <span class="m-val"><span [appCountUp]="1240" suffix="h"></span></span>
+              <span class="m-trend up">↑ esta semana</span>
             </div>
           </div>
+
+          <div class="flow">
+            <div class="flow-node"><span>📩</span><small>Mensaje</small></div>
+            <div class="flow-line"></div>
+            <div class="flow-node hot"><span>🤖</span><small>Agente IA</small></div>
+            <div class="flow-line"></div>
+            <div class="flow-node"><span>✅</span><small>Acción</small></div>
+          </div>
+
+          <div class="agents-live">
+            <div class="al-row"><span class="al-dot g"></span> Agente de Ventas <b>respondiendo…</b></div>
+            <div class="al-row"><span class="al-dot v"></span> Agente de Soporte <b>3 chats activos</b></div>
+            <div class="al-row"><span class="al-dot c"></span> Agente Financiero <b>conciliando pagos</b></div>
+          </div>
+
+          <div class="spark">
+            <svg viewBox="0 0 280 60" preserveAspectRatio="none">
+              <polyline points="0,48 30,40 60,44 90,28 120,32 150,18 180,22 210,10 240,14 280,4"
+                        fill="none" stroke="url(#gln)" stroke-width="2.5" stroke-linecap="round"/>
+              <defs>
+                <linearGradient id="gln" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#7c6cff"/><stop offset="1" stop-color="#22d3ee"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
         </div>
-      }
+      </div>
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
     </div>
-    <div class="text-center mt-4">
-      <a routerLink="/portafolio" class="btn btn-white">Ver todo el portafolio →</a>
+  </div>
+
+  <!-- Integraciones marquee -->
+  <div class="hero-marquee container">
+    <p class="mq-label">Se integra con las herramientas que ya usas</p>
+    <div class="marquee">
+      <div class="marquee-track">
+        @for (i of integraciones.concat(integraciones); track $index) {
+          <span class="mq-item">{{ i }}</span>
+        }
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════ POR QUÉ ELEGIRNOS ═════════════════════ -->
+<!-- ═══════════════════════ STATS ═══════════════════════ -->
+<section class="section-sm stats-band">
+  <div class="container grid-4">
+    <div class="stat reveal" appReveal>
+      <span class="stat-num"><span [appCountUp]="90" suffix="%"></span></span>
+      <span class="stat-lbl">menos tiempo en tareas manuales</span>
+    </div>
+    <div class="stat reveal d1" appReveal>
+      <span class="stat-num"><span [appCountUp]="24" suffix="/7"></span></span>
+      <span class="stat-lbl">operación sin pausas</span>
+    </div>
+    <div class="stat reveal d2" appReveal>
+      <span class="stat-num"><span [appCountUp]="3" suffix="x"></span></span>
+      <span class="stat-lbl">más velocidad operativa</span>
+    </div>
+    <div class="stat reveal d3" appReveal>
+      <span class="stat-num">&lt;<span [appCountUp]="60" suffix="s"></span></span>
+      <span class="stat-lbl">de respuesta al cliente</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ LÍNEAS DE NEGOCIO ═══════════════════════ -->
+<section class="section" id="soluciones">
+  <div class="container">
+    <div class="section-head reveal" appReveal>
+      <div class="eyebrow"><span class="dot"></span> Qué construimos</div>
+      <h2>No desarrollamos software.<br><span class="gradient-text">Creamos sistemas que trabajan.</span></h2>
+      <p>Cuatro líneas para convertir procesos manuales en operaciones autónomas.</p>
+    </div>
+    <div class="grid-2">
+      @for (l of lineas; track l.titulo; let idx = $index) {
+        <article class="line-card glass reveal" [class.d1]="idx % 2 === 1" appReveal>
+          <div class="line-icon" [attr.data-tint]="l.tint">{{ l.icon }}</div>
+          <h3>{{ l.titulo }}</h3>
+          <p>{{ l.desc }}</p>
+          <ul class="line-bullets">
+            @for (b of l.bullets; track b) { <li>{{ b }}</li> }
+          </ul>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ¿QUÉ PUEDE AUTOMATIZAR TU EMPRESA? (interactivo) ═══════════ -->
+<section class="section auto-section" id="automatizar">
+  <div class="container">
+    <div class="section-head reveal" appReveal>
+      <div class="eyebrow"><span class="dot"></span> Automatización empresarial</div>
+      <h2>¿Qué puede automatizar tu empresa?</h2>
+      <p>Elige un área y descubre el antes, el cómo y el después.</p>
+    </div>
+
+    <div class="auto-wrap reveal" appReveal>
+      <div class="auto-tabs">
+        @for (a of areas; track a.key; let i = $index) {
+          <button class="auto-tab" [class.active]="areaActiva === i" (click)="areaActiva = i">
+            <span>{{ a.icon }}</span> {{ a.key }}
+          </button>
+        }
+      </div>
+
+      <div class="auto-panel glass">
+        <div class="ap-col problema">
+          <span class="ap-tag">Problema actual</span>
+          <p>{{ areas[areaActiva].problema }}</p>
+        </div>
+        <div class="ap-arrow">→</div>
+        <div class="ap-col solucion">
+          <span class="ap-tag tag-v">Automatización con IA</span>
+          <p>{{ areas[areaActiva].automatizacion }}</p>
+        </div>
+        <div class="ap-arrow">→</div>
+        <div class="ap-col resultado">
+          <span class="ap-tag tag-g">Resultado</span>
+          <p>{{ areas[areaActiva].resultado }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ EMPLEADOS DIGITALES ═══════════════════════ -->
+<section class="section" id="empleados">
+  <div class="container">
+    <div class="section-head reveal" appReveal>
+      <div class="eyebrow"><span class="dot"></span> Empleados digitales</div>
+      <h2>Tu próximo equipo no <span class="gradient-text">duerme</span></h2>
+      <p>Agentes especializados que ejecutan tareas reales, aprenden de tu negocio y trabajan sin parar.</p>
+    </div>
+    <div class="grid-3">
+      @for (ag of agentes; track ag.nombre; let i = $index) {
+        <article class="agent-card glass reveal" [class]="'d' + (i % 4)" appReveal>
+          <div class="agent-head">
+            <div class="agent-avatar" [attr.data-tint]="ag.tint">{{ ag.icon }}</div>
+            <span class="agent-status"><i></i> 24/7</span>
+          </div>
+          <h3>{{ ag.nombre }}</h3>
+          <ul class="agent-fns">
+            @for (f of ag.funciones; track f) { <li>{{ f }}</li> }
+          </ul>
+          <div class="agent-foot">
+            <span class="af-label">Integra</span>
+            <div class="af-pills">
+              @for (it of ag.integra; track it) { <span class="tech-pill">{{ it }}</span> }
+            </div>
+          </div>
+        </article>
+      }
+      <article class="agent-card agent-cta glass reveal d1" appReveal>
+        <h3>¿Necesitas un agente a medida?</h3>
+        <p>Diseñamos empleados digitales para tu proceso específico.</p>
+        <a routerLink="/contacto" class="btn btn-primary">Solicitar Diagnóstico</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ CASOS DE USO REALES ═══════════════════════ -->
+<section class="section casos-section" id="casos">
+  <div class="container">
+    <div class="section-head reveal" appReveal>
+      <div class="eyebrow"><span class="dot"></span> Casos de uso reales</div>
+      <h2>Procesos que pasaron de <span class="gradient-text">manuales a autónomos</span></h2>
+    </div>
+    <div class="grid-2">
+      @for (c of casos; track c.sector; let i = $index) {
+        <article class="caso-card glass reveal" [class.d1]="i % 2 === 1" appReveal>
+          <div class="caso-head">
+            <span class="caso-icon">{{ c.icon }}</span>
+            <span class="badge badge-violet">{{ c.sector }}</span>
+          </div>
+          <div class="caso-ba">
+            <div class="ba-item antes"><span>Antes</span><p>{{ c.antes }}</p></div>
+            <div class="ba-item despues"><span>Después</span><p>{{ c.despues }}</p></div>
+          </div>
+          <div class="caso-metric">
+            <strong><span [appCountUp]="c.metric" [suffix]="c.sufijo"></span></strong>
+            <span>{{ c.kpi }}</span>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ POR QUÉ LUNA ═══════════════════════ -->
 <section class="section" id="por-que">
   <div class="container">
-    <div class="why-inner">
-      <div class="why-text fade-up">
-        <div class="label">¿Por qué elegirnos?</div>
-        <h2>Más que código — somos tu socio tecnológico</h2>
-        <p>No solo entregamos software, entregamos soluciones que crecen con tu empresa.</p>
-        <div class="why-list">
-          @for (w of porQue; track w.t) {
-            <div class="why-item">
-              <div class="wi-icon">{{ w.i }}</div>
-              <div><strong>{{ w.t }}</strong><br><span>{{ w.d }}</span></div>
-            </div>
-          }
-        </div>
-        <a routerLink="/contacto" class="btn btn-primary mt-3">Empezar proyecto →</a>
-      </div>
-      <div class="why-visual">
-        <div class="testimonial-stack">
-          @for (t of testimonials; track t.n) {
-            <div class="testi">
-              <div class="testi-stars">⭐⭐⭐⭐⭐</div>
-              <p>"{{ t.t }}"</p>
-              <div class="testi-author">
-                <div class="testi-av" [style.background]="t.c">{{ t.n[0] }}</div>
-                <div><strong>{{ t.n }}</strong><br><small>{{ t.empresa }}</small></div>
-              </div>
-            </div>
-          }
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════ PRECIOS ════════════════════════════════ -->
-<section class="section bg-light-section" id="precios">
-  <div class="container">
-    <div class="text-center mb-5">
-      <div class="label">Precios</div>
-      <h2>Planes claros y transparentes</h2>
-      <p>Sin costos ocultos. Precios en USD — pagos en soles disponibles.</p>
+    <div class="section-head reveal" appReveal>
+      <div class="eyebrow"><span class="dot"></span> Por qué Luna IT Solutions</div>
+      <h2>La diferencia entre <span class="gradient-text">tener software y tener un sistema que trabaja</span></h2>
     </div>
     <div class="grid-3">
-      @for (plan of planes; track plan.nombre) {
-        <div class="price-card" [class.featured]="plan.featured">
-          @if (plan.featured) { <div class="pc-badge">Más popular</div> }
-          <div class="plan-name">{{ plan.nombre }}</div>
-          <div class="plan-price"><span>$</span>{{ plan.precio }}<small>/proyecto</small></div>
-          <p class="plan-desc">{{ plan.desc }}</p>
-          <ul class="plan-features">
-            @for (f of plan.features; track f) {
-              <li>✅ {{ f }}</li>
-            }
-          </ul>
-          <a routerLink="/contacto" class="btn" [class.btn-primary]="plan.featured" [class.btn-outline]="!plan.featured">
-            Contratar →
-          </a>
+      @for (d of diferenciadores; track d.t; let i = $index) {
+        <div class="dif-card reveal" [class]="'d' + (i % 3)" appReveal>
+          <div class="dif-icon">{{ d.icon }}</div>
+          <h3>{{ d.t }}</h3>
+          <p>{{ d.d }}</p>
         </div>
       }
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════ CTA ════════════════════════════════════ -->
-<section class="cta-section">
-  <div class="container text-center">
-    <h2>¿Tienes un proyecto en mente?</h2>
-    <p>Respuesta en menos de 24 horas. Primera consulta <strong>100% gratis</strong>.</p>
-    <div class="cta-actions">
-      <a routerLink="/contacto" class="btn btn-white">Cotizar ahora</a>
-      <a href="https://wa.me/51922307301?text=Hola%20Luna%20IT%20Solutions%2C%20tengo%20un%20proyecto"
-         target="_blank" class="btn btn-whatsapp">
-        💬 WhatsApp directo
-      </a>
+<!-- ═══════════════════════ PROCESO ═══════════════════════ -->
+<section class="section proceso-section">
+  <div class="container">
+    <div class="section-head reveal" appReveal>
+      <div class="eyebrow"><span class="dot"></span> Cómo trabajamos</div>
+      <h2>De proceso manual a sistema autónomo en 4 pasos</h2>
     </div>
-    <p class="cta-sub">calebluna41&#64;gmail.com &nbsp;·&nbsp; Lima, Perú 🇵🇪</p>
+    <div class="proceso-grid">
+      @for (p of proceso; track p.n; let i = $index) {
+        <div class="proceso-step reveal" [class]="'d' + i" appReveal>
+          <span class="ps-num">{{ p.n }}</span>
+          <h3>{{ p.t }}</h3>
+          <p>{{ p.d }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ CTA DIAGNÓSTICO ═══════════════════════ -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-card glass reveal" appReveal>
+      <div class="cta-glow"></div>
+      <div class="eyebrow"><span class="dot"></span> Diagnóstico gratuito</div>
+      <h2>Diagnóstico de Automatización <span class="gradient-text">Gratuito</span></h2>
+      <p class="lead" style="margin:1rem auto 0;">
+        Analizamos tus procesos y te presentamos oportunidades reales de automatización con IA.
+        Sin costo y sin compromiso.
+      </p>
+      <div class="cta-actions">
+        <a routerLink="/contacto" class="btn btn-primary btn-lg">Solicitar Diagnóstico</a>
+        <a href="https://wa.me/51922307301?text=Hola%20Luna%20IT%20Solutions%2C%20quiero%20un%20diagn%C3%B3stico%20de%20automatizaci%C3%B3n"
+           target="_blank" class="btn btn-whatsapp btn-lg">💬 WhatsApp directo</a>
+      </div>
+    </div>
   </div>
 </section>
 

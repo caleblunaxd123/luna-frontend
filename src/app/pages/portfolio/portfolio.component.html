@@ -2,9 +2,11 @@
 
 <section class="page-hero">
   <div class="container">
-    <div class="label">Nuestro trabajo</div>
-    <h1>Portafolio de <span class="gradient-text">proyectos</span></h1>
-    <p>Sistemas reales desarrollados para empresas en Perú y LATAM.</p>
+    <div class="eyebrow"><span class="dot"></span> Casos de uso reales</div>
+    <h1>Procesos que pasaron de <span class="gradient-text">manuales a autónomos</span></h1>
+    <p class="lead" style="margin:1.2rem auto 0;">
+      Escenarios reales de automatización con IA, con su antes, su cómo y su resultado.
+    </p>
   </div>
 </section>
 
@@ -12,46 +14,45 @@
   <div class="container">
     <div class="filtros">
       @for (f of filtros; track f.key) {
-        <button class="filtro-btn" [class.active]="filtroActivo===f.key" (click)="filtroActivo=f.key">
+        <button class="filtro" [class.active]="filtroActivo === f.key" (click)="filtroActivo = f.key">
           {{ f.label }} <span class="count">{{ contarPorFiltro(f.key) }}</span>
         </button>
       }
     </div>
-    <div class="portfolio-grid">
-      @for (p of proyectosFiltrados; track p.nombre) {
-        <div class="pj-card">
-          <div class="pj-preview" [style.background]="p.gradient">
-            <span class="pj-icon">{{ p.icon }}</span>
-            <div class="pj-overlay"><span class="badge badge-cyan">{{ p.tipo }}</span></div>
+
+    <div class="grid-3 casos-grid">
+      @for (c of casosFiltrados; track c.titulo) {
+        <article class="caso glass">
+          <div class="caso-top">
+            <div class="caso-icon" [attr.data-tint]="c.tint">{{ c.icon }}</div>
+            <span class="badge badge-violet">{{ c.area }}</span>
           </div>
-          <div class="pj-body">
-            <h3>{{ p.nombre }}</h3>
-            <p>{{ p.desc }}</p>
-            <div class="pj-stack">
-              @for (s of p.stack; track s) { <span class="tech-pill">{{ s }}</span> }
-            </div>
-            <div class="pj-footer">
-              @if (p.precio > 0) {
-                <span class="pj-price">desde <strong>${{ p.precio }} USD</strong></span>
-              } @else {
-                <span class="pj-price"><strong>Caso de éxito</strong></span>
-              }
-              @if (p.url) {
-                <a [href]="p.url" target="_blank" class="btn-link">Ver proyecto →</a>
-              } @else {
-                <a routerLink="/contacto" class="btn-link">Quiero algo similar →</a>
-              }
+          <h3>{{ c.titulo }}</h3>
+          <div class="caso-step antes"><span>Antes</span><p>{{ c.antes }}</p></div>
+          <div class="caso-step sol"><span>Automatización</span><p>{{ c.solucion }}</p></div>
+          <div class="caso-step res"><span>Resultado</span><p>{{ c.resultado }}</p></div>
+          <div class="caso-foot">
+            <div class="caso-metric"><strong>{{ c.metric }}</strong><span>{{ c.kpi }}</span></div>
+            <div class="caso-tags">
+              @for (t of c.tags; track t) { <span class="tech-pill">{{ t }}</span> }
             </div>
           </div>
-        </div>
+        </article>
       }
     </div>
-    <div class="portfolio-cta text-center">
-      <h2>¿Necesitas algo similar?</h2>
-      <p>Cuéntanos qué necesitas y te damos una propuesta en 24h.</p>
-      <div class="cta-btns">
-        <a routerLink="/contacto" class="btn btn-primary">Solicitar cotización</a>
-        <a href="https://wa.me/51922307301" target="_blank" class="btn btn-whatsapp">💬 WhatsApp</a>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-card glass reveal" appReveal>
+      <div class="cta-glow"></div>
+      <h2>¿Cuál de estos se parece a tu empresa?</h2>
+      <p class="lead" style="margin:1rem auto 0;">Te mostramos cómo se vería automatizado tu propio proceso. Diagnóstico gratuito.</p>
+      <div class="cta-actions">
+        <a routerLink="/contacto" class="btn btn-primary btn-lg">Solicitar Diagnóstico</a>
+        <a href="https://wa.me/51922307301?text=Hola%20Luna%20IT%20Solutions%2C%20vi%20los%20casos%20de%20uso%20y%20quiero%20automatizar%20un%20proceso"
+           target="_blank" class="btn btn-whatsapp btn-lg">💬 WhatsApp directo</a>
       </div>
     </div>
   </div>

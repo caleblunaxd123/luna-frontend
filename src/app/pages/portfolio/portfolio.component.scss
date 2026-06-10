@@ -1,29 +1,48 @@
-.page-hero { background: linear-gradient(135deg,#0f172a,#1e1b4b); padding: 10rem 0 4rem; text-align: center; }
-.page-hero h1 { color: #fff; }
-.page-hero p  { color: rgba(255,255,255,.7); max-width: 520px; margin: 1rem auto 0; }
-.filtros { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; margin-bottom: 3rem; }
-.filtro-btn { padding: .5rem 1.25rem; border-radius: 50px; border: 1.5px solid #e2e8f0; background: #fff; cursor: pointer; font-size: .88rem; font-weight: 500; color: #475569; transition: all .2s; }
-.filtro-btn .count { background: #f1f5f9; border-radius: 10px; padding: 0 .4rem; font-size: .75rem; margin-left: .3rem; }
-.filtro-btn.active { background: #6366f1; color: #fff; border-color: #6366f1; }
-.portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); gap: 1.5rem; margin-bottom: 4rem; }
-.pj-card { background: #fff; border-radius: 16px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,.06); transition: all .25s; }
-.pj-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,.12); }
-.pj-preview { height: 160px; display: flex; align-items: center; justify-content: center; position: relative; }
-.pj-icon { font-size: 3.5rem; }
-.pj-overlay { position: absolute; top: 1rem; right: 1rem; }
-.pj-body { padding: 1.5rem; }
-.pj-body h3 { font-size: 1.05rem; font-weight: 700; margin: .5rem 0; }
-.pj-body p  { font-size: .88rem; color: #64748b; margin-bottom: 1rem; }
-.pj-stack { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
-.tech-pill { background: #f1f5f9; color: #475569; padding: .2rem .6rem; border-radius: 6px; font-size: .72rem; font-weight: 500; }
-.pj-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #f1f5f9; padding-top: .875rem; margin-top: .875rem; }
-.pj-price { font-size: .88rem; color: #64748b; }
-.pj-price strong { color: #6366f1; font-size: 1rem; }
-.btn-link { font-size: .82rem; color: #6366f1; font-weight: 600; }
-.btn-link:hover { text-decoration: underline; }
-.portfolio-cta { background: linear-gradient(135deg,#6366f1,#4f46e5); border-radius: 20px; padding: 4rem 2rem; text-align: center; margin-top: 2rem; }
-.portfolio-cta h2 { color: #fff; margin-bottom: .75rem; }
-.portfolio-cta p  { color: rgba(255,255,255,.8); margin-bottom: 2rem; }
-.cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-.btn-whatsapp { background: #25d366; color: #fff; border-radius: 50px; padding: .85rem 2rem; font-size: .95rem; font-weight: 600; display: inline-flex; align-items: center; gap: .5rem; transition: all .2s; }
-.btn-whatsapp:hover { background: #22c55e; transform: translateY(-2px); }
+.page-hero { padding: 11rem 0 2.5rem; text-align: center; }
+.page-hero h1 { max-width: 18ch; margin: 0 auto; }
+.page-hero .lead { margin-left: auto; margin-right: auto; }
+
+/* Filtros */
+.filtros { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; margin-bottom: 2.5rem; }
+.filtro {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: var(--surface); border: 1px solid var(--border); color: var(--muted);
+  padding: .55rem 1.1rem; border-radius: 50px; font-size: .9rem; font-weight: 600;
+  font-family: inherit; cursor: pointer; transition: all .25s var(--ease);
+}
+.filtro:hover { color: #fff; border-color: var(--border-2); }
+.filtro.active { background: var(--grad); color: #fff; border-color: transparent; box-shadow: 0 10px 26px -10px rgba(124,108,255,.7); }
+.filtro .count { font-size: .72rem; background: rgba(0,0,0,.25); padding: .05rem .45rem; border-radius: 50px; }
+.filtro.active .count { background: rgba(255,255,255,.25); }
+
+/* Caso card */
+.caso { padding: 1.7rem; display: flex; flex-direction: column; }
+.caso-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.caso-icon { width: 50px; height: 50px; border-radius: 14px; display: grid; place-items: center; font-size: 1.45rem; border: 1px solid var(--border); }
+.caso-icon[data-tint="violet"] { background: rgba(124,108,255,.14); box-shadow: 0 0 24px -10px var(--violet); }
+.caso-icon[data-tint="cyan"]   { background: rgba(34,211,238,.12);  box-shadow: 0 0 24px -10px var(--cyan); }
+.caso-icon[data-tint="pink"]   { background: rgba(217,70,239,.12);  box-shadow: 0 0 24px -10px var(--pink); }
+.caso-icon[data-tint="green"]  { background: rgba(16,185,129,.12);  box-shadow: 0 0 24px -10px #10b981; }
+.caso-icon[data-tint="amber"]  { background: rgba(245,158,11,.12);  box-shadow: 0 0 24px -10px #f59e0b; }
+.caso h3 { font-size: 1.12rem; margin-bottom: 1rem; }
+
+.caso-step { padding-left: 1rem; border-left: 2px solid var(--border); margin-bottom: .85rem; }
+.caso-step span { display: block; font-size: .68rem; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; margin-bottom: .2rem; }
+.caso-step p { font-size: .85rem; color: #c4c4dc; }
+.caso-step.antes { border-color: rgba(239,68,68,.5); } .caso-step.antes span { color: #ff9d9d; }
+.caso-step.sol   { border-color: rgba(124,108,255,.6); } .caso-step.sol span { color: #b6acff; }
+.caso-step.res   { border-color: rgba(16,185,129,.6); } .caso-step.res span { color: #6ee7b7; }
+
+.caso-foot { margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border); }
+.caso-metric { display: flex; align-items: baseline; gap: .5rem; margin-bottom: .7rem; }
+.caso-metric strong { font-family: 'Plus Jakarta Sans'; font-size: 1.6rem; font-weight: 800;
+  background: var(--grad-soft); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.caso-metric span { font-size: .82rem; color: var(--muted); }
+.caso-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+
+/* CTA */
+.cta-section { padding: 3rem 0 7rem; }
+.cta-card { position: relative; text-align: center; padding: 4rem 2rem; overflow: hidden; }
+.cta-glow { position: absolute; inset: 0; z-index: 0; background: radial-gradient(40rem 20rem at 50% 0%, rgba(124,108,255,.25), transparent 70%); pointer-events: none; }
+.cta-card > * { position: relative; z-index: 1; }
+.cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }

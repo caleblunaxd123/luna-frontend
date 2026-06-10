@@ -1,7 +1,7 @@
 <!-- Burbuja de notificación -->
 @if (mostrarBurbuja && !abierto) {
   <div class="chat-bubble" (click)="toggleChat()">
-    💬 ¿Necesitas un sistema o app? ¡Cotiza gratis!
+    🤖 ¿Qué puede automatizar tu empresa? Descúbrelo gratis
   </div>
 }
 
@@ -14,10 +14,10 @@
 @if (abierto) {
   <div class="chat-window">
     <div class="chat-header">
-      <div class="chat-av">CL</div>
+      <div class="chat-av">L</div>
       <div>
-        <div class="chat-title">Luna IT Solutions</div>
-        <div class="chat-status">🟢 En línea — responde en minutos</div>
+        <div class="chat-title">Asistente IA · Luna</div>
+        <div class="chat-status">🟢 En línea — diagnóstico gratuito</div>
       </div>
     </div>
 
@@ -25,7 +25,7 @@
       @for (m of mensajes; track $index) {
         <div class="msg" [class.bot]="m.tipo==='bot'" [class.user]="m.tipo==='user'">
           @if (m.tipo === 'bot') {
-            <div class="msg-av">CL</div>
+            <div class="msg-av">L</div>
           }
           <div class="msg-bubble">
             <span [innerHTML]="formatear(m.texto)"></span>

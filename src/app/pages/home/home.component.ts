@@ -3,140 +3,162 @@ import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../../shared/components/header.component';
 import { FooterComponent } from '../../footer/footer.component';
+import { RevealDirective } from '../../shared/reveal.directive';
+import { CountUpDirective } from '../../shared/count-up.directive';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, CommonModule, HeaderComponent, FooterComponent],
+  imports: [RouterLink, CommonModule, HeaderComponent, FooterComponent, RevealDirective, CountUpDirective],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
 
-  techs = [
-    { i: '⚡', n: 'Angular 19' }, { i: '🔷', n: '.NET 8'     },
-    { i: '🗄️', n: 'SQL Server' }, { i: '🐳', n: 'Docker'     },
-    { i: '☁️', n: 'AWS / Azure'}, { i: '📱', n: 'Ionic'      },
-    { i: '🔐', n: 'JWT / Auth' }, { i: '📊', n: 'Power BI'   },
-  ];
-
-  servicios = [
+  /* ── Líneas de negocio ───────────────────────────────── */
+  lineas = [
     {
-      icon: '💻', bg: 'linear-gradient(135deg,#ede9fe,#f5f3ff)',
-      titulo: 'Desarrollo Web a Medida',
-      desc: 'Sistemas web completos con Angular + .NET 8. ERP, CRM, inventarios, facturación SUNAT, portales.',
-      tags: ['Angular 19', '.NET 8', 'SQL Server'],
-      desde: '$500 USD'
+      icon: '🤖', tint: 'violet',
+      titulo: 'Empleados Digitales IA',
+      desc: 'Agentes autónomos que ejecutan tareas reales de tu operación: atienden, venden, gestionan y dan seguimiento. 24/7, sin descanso.',
+      bullets: ['Ventas y atención al cliente', 'Soporte y cobranza', 'RRHH y administración'],
     },
     {
-      icon: '📱', bg: 'linear-gradient(135deg,#d1fae5,#ecfdf5)',
-      titulo: 'Apps Móviles',
-      desc: 'Aplicaciones iOS y Android con Ionic o React Native. Conectadas a tu backend existente.',
-      tags: ['Ionic', 'React Native', 'API REST'],
-      desde: '$800 USD'
+      icon: '✨', tint: 'cyan',
+      titulo: 'Aplicaciones Inteligentes',
+      desc: 'CRM, ERP y plataformas SaaS con IA integrada desde el diseño. No software con IA encima: software que piensa.',
+      bullets: ['CRM / ERP con IA', 'Plataformas SaaS a medida', 'Apps web y móviles'],
     },
     {
-      icon: '🏗️', bg: 'linear-gradient(135deg,#dbeafe,#eff6ff)',
-      titulo: 'API REST & Microservicios',
-      desc: 'APIs robustas con Clean Architecture, JWT, Swagger y documentación completa.',
-      tags: ['.NET 8', 'Clean Arch', 'Swagger'],
-      desde: '$300 USD'
+      icon: '⚙️', tint: 'pink',
+      titulo: 'Automatización Empresarial',
+      desc: 'Conectamos procesos completos de punta a punta. Lo que hoy toma horas, lo ejecuta un flujo autónomo en segundos.',
+      bullets: ['Correo → IA → Acción', 'WhatsApp → CRM → Seguimiento', 'Documentos → Extracción → Reportes'],
     },
     {
-      icon: '🛒', bg: 'linear-gradient(135deg,#fef3c7,#fffbeb)',
-      titulo: 'Ecommerce Profesional',
-      desc: 'Tiendas online con carrito, pagos, gestión de productos e inventario integrado.',
-      tags: ['Angular', 'Stripe', 'PayPal'],
-      desde: '$700 USD'
-    },
-    {
-      icon: '🔧', bg: 'linear-gradient(135deg,#fce7f3,#fdf2f8)',
-      titulo: 'Consultoría & Code Review',
-      desc: 'Revisión de arquitectura, optimización, refactorización y mentoring a equipos.',
-      tags: ['Arquitectura', 'SOLID', 'Clean Code'],
-      desde: '$50/hr'
-    },
-    {
-      icon: '📦', bg: 'linear-gradient(135deg,#e0f2fe,#f0f9ff)',
-      titulo: 'Templates Listos para Usar',
-      desc: 'Sistemas pre-desarrollados que puedes personalizar e implementar en días, no meses.',
-      tags: ['Angular', '.NET', 'Documentado'],
-      desde: '$39 USD'
+      icon: '📊', tint: 'green',
+      titulo: 'Dashboards Ejecutivos',
+      desc: 'Paneles que no solo muestran datos: los analizan, detectan riesgos y responden tus preguntas en lenguaje natural.',
+      bullets: ['Análisis de indicadores', 'Detección de riesgos', 'Recomendaciones por IA'],
     },
   ];
 
-  portfolio = [
+  /* ── ¿Qué puede automatizar tu empresa? (interactivo) ── */
+  areas = [
     {
-      icon: '📊', gradient: 'linear-gradient(135deg,#6366f1,#8b5cf6)',
-      nombre: 'Sistema ERP PYME', tipo: 'Sistema Empresarial',
-      desc: 'ERP completo con módulos de ventas, inventario, RRHH y contabilidad.',
-      stack: ['Angular 19', '.NET 8', 'SQL Server']
+      key: 'Atención',  icon: '💬',
+      problema: 'El equipo responde las mismas consultas todo el día y los clientes esperan horas.',
+      automatizacion: 'Un agente IA responde al instante en WhatsApp, web y correo, escala solo lo complejo.',
+      resultado: 'Respuesta en segundos · 80% de consultas resueltas sin intervención humana.',
     },
     {
-      icon: '🏥', gradient: 'linear-gradient(135deg,#06b6d4,#0891b2)',
-      nombre: 'Sistema Clínica Médica', tipo: 'Salud',
-      desc: 'Historia clínica digital, agendamiento, recetas y facturación para clínicas.',
-      stack: ['Angular', '.NET', 'PDF Reports']
+      key: 'Ventas', icon: '🎯',
+      problema: 'Leads que llegan de noche o fin de semana se enfrían antes de que alguien los contacte.',
+      automatizacion: 'El agente califica, responde y agenda reuniones automáticamente, registra todo en el CRM.',
+      resultado: 'Cero leads perdidos · +35% de conversión en el primer contacto.',
     },
     {
-      icon: '🛍️', gradient: 'linear-gradient(135deg,#10b981,#059669)',
-      nombre: 'Ecommerce B2B', tipo: 'Comercio',
-      desc: 'Plataforma de ventas B2B con catálogo, pedidos y integración ERP.',
-      stack: ['Angular', 'Stripe', '.NET 8']
+      key: 'Cobranza', icon: '💳',
+      problema: 'Seguimiento manual de pagos vencidos: tedioso, irregular y siempre tarde.',
+      automatizacion: 'Recordatorios inteligentes por etapas, tono adaptado al cliente y conciliación automática.',
+      resultado: 'Reducción de mora · 40% menos días de cobro promedio.',
     },
     {
-      icon: '📋', gradient: 'linear-gradient(135deg,#f59e0b,#d97706)',
-      nombre: 'CRM Inmobiliaria', tipo: 'CRM',
-      desc: 'Gestión de propiedades, clientes, visitas y comisiones de ventas.',
-      stack: ['Angular', '.NET', 'SQL Server']
+      key: 'RRHH', icon: '👥',
+      problema: 'Filtrar CVs y responder preguntas internas consume horas del equipo de Recursos Humanos.',
+      automatizacion: 'IA preselecciona candidatos, agenda entrevistas y responde dudas de empleados 24/7.',
+      resultado: 'Contratación 3x más rápida · equipo enfocado en lo estratégico.',
     },
     {
-      icon: '🚚', gradient: 'linear-gradient(135deg,#ef4444,#dc2626)',
-      nombre: 'Sistema Logística', tipo: 'Logística',
-      desc: 'Tracking de entregas, gestión de rutas y dashboard de conductores.',
-      stack: ['Angular', 'SignalR', '.NET 8']
+      key: 'Contabilidad', icon: '🧾',
+      problema: 'Digitar facturas y comprobantes a mano genera errores y retrasa los cierres.',
+      automatizacion: 'La IA lee documentos, extrae datos y los carga clasificados a tu sistema contable.',
+      resultado: '90% menos digitación · cierres contables sin cuellos de botella.',
     },
     {
-      icon: '📚', gradient: 'linear-gradient(135deg,#8b5cf6,#7c3aed)',
-      nombre: 'Plataforma LMS', tipo: 'Educación',
-      desc: 'LMS con cursos en video, evaluaciones, certificados y progreso.',
-      stack: ['Angular', '.NET', 'Video API']
+      key: 'Operaciones', icon: '🔄',
+      problema: 'Tareas repetitivas entre sistemas que nadie quiere hacer y que frenan todo lo demás.',
+      automatizacion: 'Flujos que conectan tus apps y mueven la información sola, con reglas y validaciones.',
+      resultado: 'Procesos 24/7 · el equipo deja de operar y empieza a decidir.',
+    },
+  ];
+  areaActiva = 0;
+
+  /* ── Empleados Digitales (tarjetas) ──────────────────── */
+  agentes = [
+    {
+      nombre: 'Agente de Ventas IA', icon: '🎯', tint: 'violet',
+      funciones: ['Califica y responde leads al instante', 'Agenda reuniones automáticamente', 'Registra y actualiza el CRM'],
+      integra: ['WhatsApp', 'CRM', 'Calendario'],
+    },
+    {
+      nombre: 'Agente de Soporte IA', icon: '💬', tint: 'cyan',
+      funciones: ['Atiende consultas 24/7', 'Resuelve con tu base de conocimiento', 'Escala solo los casos complejos'],
+      integra: ['Web', 'Email', 'Help Desk'],
+    },
+    {
+      nombre: 'Agente Administrativo IA', icon: '🗂️', tint: 'pink',
+      funciones: ['Procesa documentos y formularios', 'Genera reportes automáticos', 'Organiza y clasifica información'],
+      integra: ['Drive', 'ERP', 'Sheets'],
+    },
+    {
+      nombre: 'Agente de RRHH IA', icon: '👥', tint: 'green',
+      funciones: ['Preselecciona candidatos', 'Responde dudas de empleados', 'Coordina entrevistas'],
+      integra: ['Email', 'Calendario', 'ATS'],
+    },
+    {
+      nombre: 'Agente Financiero IA', icon: '💳', tint: 'amber',
+      funciones: ['Seguimiento de cobranza', 'Concilia pagos automáticamente', 'Alerta sobre riesgos y vencimientos'],
+      integra: ['Banca', 'ERP', 'WhatsApp'],
     },
   ];
 
-  porQue = [
-    { i: '⚡', t: 'Entrega rápida',      d: 'Proyectos simples en 2-3 semanas. Sin demoras.' },
-    { i: '🏗️', t: 'Arquitectura sólida', d: 'Clean Architecture, SOLID, código documentado.' },
-    { i: '🔒', t: 'Seguridad incluida',  d: 'JWT, roles, HTTPS, validaciones en todas las capas.' },
-    { i: '📞', t: 'Soporte post-entrega', d: '30 días de soporte gratuito en cada proyecto.' },
-    { i: '💰', t: 'Precios justos',      d: 'Calidad de empresa grande, precio de freelancer.' },
-    { i: '📄', t: 'Documentación total', d: 'Manual de usuario, técnico y código comentado.' },
+  /* ── Casos de uso reales (antes / después) ───────────── */
+  casos = [
+    {
+      sector: 'Logística', icon: '🚚',
+      antes: '5 horas diarias clasificando y respondiendo correos de solicitudes.',
+      despues: 'La IA clasifica cada solicitud, responde y crea la tarea automáticamente.',
+      metric: 90, sufijo: '%', kpi: 'menos tiempo operativo',
+    },
+    {
+      sector: 'Retail', icon: '🛍️',
+      antes: 'Consultas de stock y pedidos saturando al equipo en horas pico.',
+      despues: 'Un empleado digital atiende en WhatsApp, consulta inventario y toma pedidos.',
+      metric: 24, sufijo: '/7', kpi: 'atención sin pausas',
+    },
+    {
+      sector: 'Servicios', icon: '🧑‍💼',
+      antes: 'Leads de la web sin responder hasta el día siguiente.',
+      despues: 'Respuesta y agendamiento automático en menos de un minuto, día y noche.',
+      metric: 35, sufijo: '%', kpi: 'más conversión',
+    },
+    {
+      sector: 'Finanzas', icon: '🏦',
+      antes: 'Cobranza manual irregular y cierres contables siempre atrasados.',
+      despues: 'Recordatorios inteligentes y lectura automática de comprobantes.',
+      metric: 40, sufijo: '%', kpi: 'menos días de cobro',
+    },
   ];
 
-  testimonials = [
-    { n: 'Carlos Mendoza', empresa: 'CEO — Distribuidora Lima', c: '#6366f1',
-      t: 'Entregaron nuestro sistema de inventario en 3 semanas. Cero bugs al lanzamiento.' },
-    { n: 'Ana Torres', empresa: 'Gerente TI — Clínica San Marcos', c: '#10b981',
-      t: 'El mejor desarrollador con quien hemos trabajado. Código limpio y bien documentado.' },
-    { n: 'Luis García', empresa: 'Fundador — StartupPE', c: '#06b6d4',
-      t: 'Nuestra plataforma SaaS está funcionando perfecto. Muy profesional y puntual.' },
+  /* ── ¿Por qué Luna IT Solutions? ─────────────────────── */
+  diferenciadores = [
+    { icon: '🧠', t: 'No hacemos software tradicional', d: 'Diseñamos sistemas inteligentes que toman decisiones, no solo formularios que guardan datos.' },
+    { icon: '🤖', t: 'Construimos agentes especializados', d: 'Empleados digitales entrenados para tu operación real, no chatbots genéricos.' },
+    { icon: '🔌', t: 'IA integrada desde el inicio', d: 'La inteligencia es el núcleo de cada solución, no un parche que se añade al final.' },
+    { icon: '📈', t: 'Nos enfocamos en resultados', d: 'Medimos en horas ahorradas, costos reducidos y procesos que se ejecutan solos.' },
+    { icon: '🚀', t: 'Pensamos en escalabilidad', d: 'Sistemas que crecen contigo sin que tu equipo crezca al mismo ritmo.' },
+    { icon: '🇵🇪', t: 'Hechos para Latinoamérica', d: 'Entendemos el contexto, los canales y los procesos de las empresas de la región.' },
   ];
 
-  planes = [
-    {
-      nombre: 'Starter', precio: 300, featured: false,
-      desc: 'Para proyectos pequeños o landing pages profesionales.',
-      features: ['Hasta 5 páginas/módulos', 'Diseño responsivo', 'Formulario de contacto', 'Deploy incluido', '2 semanas entrega']
-    },
-    {
-      nombre: 'Professional', precio: 800, featured: true,
-      desc: 'Para sistemas web completos con backend y base de datos.',
-      features: ['Módulos ilimitados', 'API REST completa', 'Base de datos SQL Server', 'Dashboard admin', 'Auth JWT + roles', '30 días soporte', '4 semanas entrega']
-    },
-    {
-      nombre: 'Enterprise', precio: 2000, featured: false,
-      desc: 'Para empresas que necesitan soluciones a medida complejas.',
-      features: ['Todo lo de Professional', 'Microservicios / Docker', 'Integración ERP/Sunat', 'Capacitación al equipo', 'SLA garantizado', 'Soporte 3 meses']
-    },
+  /* ── Proceso de implementación ───────────────────────── */
+  proceso = [
+    { n: '01', t: 'Diagnóstico', d: 'Analizamos tus procesos y detectamos dónde la IA genera más valor.' },
+    { n: '02', t: 'Diseño de la solución', d: 'Definimos los agentes, automatizaciones e integraciones necesarias.' },
+    { n: '03', t: 'Construcción', d: 'Desarrollamos e integramos con tus herramientas actuales.' },
+    { n: '04', t: 'Despliegue y mejora', d: 'Lanzamos, medimos resultados y el sistema sigue aprendiendo.' },
   ];
+
+  /* ── Integraciones (marquee) ─────────────────────────── */
+  integraciones = ['WhatsApp', 'Gmail', 'CRM', 'ERP', 'SQL Server', 'Slack', 'Sheets', 'Stripe', 'Calendar', 'Drive', 'Telegram', 'APIs REST'];
 }

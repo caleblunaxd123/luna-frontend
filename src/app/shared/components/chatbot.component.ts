@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 interface Mensaje { tipo: 'bot' | 'user'; texto: string; opciones?: string[]; }
@@ -12,35 +12,32 @@ interface Mensaje { tipo: 'bot' | 'user'; texto: string; opciones?: string[]; }
   styleUrls: ['./chatbot.component.scss']
 })
 export class ChatbotComponent implements OnInit {
-  abierto   = false;
+  abierto    = false;
   mensajes: Mensaje[] = [];
-  input     = '';
-  paso      = 0;
-  enviando  = false;
+  input      = '';
+  paso       = 0;
   finalizado = false;
+  mostrarBurbuja = false;
 
-  // Datos recopilados del usuario
   datos: Record<string, string> = {};
 
-  // Flujo de conversación — cotizador automático
+  // Flujo de conversación — diagnóstico de automatización
   private flujo = [
-    { clave: 'nombre',      pregunta: '¡Hola! Soy el asistente de Luna IT Solutions 👋\n¿Cómo te llamas?' },
-    { clave: 'proyecto',    pregunta: '¡Mucho gusto, {nombre}! ¿Qué tipo de proyecto necesitas?',
-      opciones: ['Sistema web / ERP', 'App móvil', 'API / Backend', 'Ecommerce', 'Consultoría', 'Otro'] },
-    { clave: 'descripcion', pregunta: 'Perfecto. Cuéntame brevemente qué necesitas hacer con tu {proyecto}:' },
-    { clave: 'plazo',       pregunta: '¿Para cuándo lo necesitas?',
-      opciones: ['Lo antes posible', '1 mes', '2-3 meses', 'Sin prisa'] },
-    { clave: 'presupuesto', pregunta: '¿Tienes un presupuesto aproximado en mente?',
-      opciones: ['Menos de $300', '$300 – $800', '$800 – $2,000', 'Más de $2,000', 'No lo sé aún'] },
-    { clave: 'contacto',    pregunta: '¡Genial! Para enviarte la cotización detallada, ¿cuál es tu email o WhatsApp?' },
+    { clave: 'nombre',  pregunta: 'Hola 👋 Soy el asistente de Luna IT Solutions.\nTe ayudo a descubrir qué puede automatizar tu empresa. ¿Cómo te llamas?' },
+    { clave: 'empresa', pregunta: '¡Un gusto, {nombre}! ¿En qué área quieres ganar más tiempo?',
+      opciones: ['Atención al cliente', 'Ventas', 'Cobranza', 'RRHH', 'Administración', 'Otra'] },
+    { clave: 'proceso', pregunta: 'Perfecto. ¿Qué tarea repetitiva consume hoy más tiempo en {empresa}?' },
+    { clave: 'volumen', pregunta: '¿Con qué frecuencia ocurre esa tarea?',
+      opciones: ['Todo el día', 'Varias veces al día', 'Algunas veces por semana', 'Puntualmente'] },
+    { clave: 'contacto', pregunta: '¡Genial! Para enviarte tu diagnóstico de automatización gratuito, ¿cuál es tu email o WhatsApp?' },
   ];
 
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
   ngOnInit() {
-    // Abrir automáticamente después de 8 segundos
+    if (!isPlatformBrowser(this.platformId)) return;
     setTimeout(() => { if (!this.abierto) this.mostrarBurbuja = true; }, 8000);
   }
-
-  mostrarBurbuja = false;
 
   toggleChat() {
     this.abierto = !this.abierto;
@@ -51,10 +48,9 @@ export class ChatbotComponent implements OnInit {
   }
 
   private preguntarPaso() {
-    if (this.paso >= this.flujo.length) { this.mostrarCotizacion(); return; }
+    if (this.paso >= this.flujo.length) { this.mostrarResumen(); return; }
     const f = this.flujo[this.paso];
     let texto = f.pregunta;
-    // Reemplazar variables
     Object.entries(this.datos).forEach(([k, v]) => { texto = texto.replace(`{${k}}`, v); });
     this.agregarMensaje('bot', texto, f.opciones);
   }
@@ -88,53 +84,36 @@ export class ChatbotComponent implements OnInit {
     if (event.key === 'Enter' && !event.shiftKey) { event.preventDefault(); this.enviarInput(); }
   }
 
-  private mostrarCotizacion() {
-    const rango = this.calcularRango();
-    const cotizacion =
+  private mostrarResumen() {
+    const resumen =
       `✅ ¡Gracias ${this.datos['nombre']}!\n\n` +
-      `📋 Resumen de tu proyecto:\n` +
-      `• Tipo: ${this.datos['proyecto']}\n` +
-      `• Plazo: ${this.datos['plazo']}\n\n` +
-      `💰 Estimado: **${rango}**\n\n` +
-      `Caleb te contactará en menos de 2 horas a: ${this.datos['contacto']} con la cotización detallada y próximos pasos.`;
+      `📋 Lo que registré:\n` +
+      `• Área: ${this.datos['empresa']}\n` +
+      `• Proceso: ${this.datos['proceso']}\n` +
+      `• Frecuencia: ${this.datos['volumen']}\n\n` +
+      `🤖 **Esto es altamente automatizable con IA.**\n` +
+      `Caleb te contactará a ${this.datos['contacto']} con tu diagnóstico detallado y las oportunidades concretas para tu caso.`;
 
-    this.agregarMensaje('bot', cotizacion);
-
-    // Enviar a Netlify Forms automáticamente
+    this.agregarMensaje('bot', resumen);
     this.enviarANetlify();
 
     setTimeout(() => {
       this.agregarMensaje('bot',
-        '¿Quieres hablar ahora mismo?',
-        ['💬 WhatsApp directo', '📧 Espero el email', '🔄 Nueva consulta']);
+        '¿Quieres avanzar ahora mismo?',
+        ['💬 WhatsApp directo', '📧 Espero el diagnóstico', '🔄 Nueva consulta']);
       this.finalizado = true;
     }, 1200);
   }
 
-  private calcularRango(): string {
-    const p = this.datos['presupuesto'] ?? '';
-    const t = this.datos['proyecto']   ?? '';
-    if (p.includes('Más de $2,000')) return '$2,000 – $8,000 USD';
-    if (p.includes('$800')) return '$800 – $2,000 USD';
-    if (p.includes('$300')) return '$300 – $800 USD';
-    if (p.includes('Menos')) return '$150 – $400 USD';
-    // Estimar por tipo si no indicó presupuesto
-    if (t.includes('ERP') || t.includes('web')) return '$500 – $2,000 USD';
-    if (t.includes('móvil'))  return '$800 – $3,000 USD';
-    if (t.includes('API'))    return '$300 – $1,200 USD';
-    if (t.includes('Ecommer'))return '$700 – $2,500 USD';
-    return '$300 – $1,500 USD';
-  }
-
   private async enviarANetlify() {
+    if (!isPlatformBrowser(this.platformId)) return;
     try {
-      const resumen = Object.entries(this.datos)
-        .map(([k, v]) => `${k}: ${v}`).join('\n');
+      const resumen = Object.entries(this.datos).map(([k, v]) => `${k}: ${v}`).join('\n');
       const body = new URLSearchParams({
         'form-name': 'chatbot-cotizacion',
         nombre:   this.datos['nombre']   ?? '',
         contacto: this.datos['contacto'] ?? '',
-        proyecto: this.datos['proyecto'] ?? '',
+        proyecto: this.datos['empresa']  ?? '',
         resumen
       });
       await fetch('/', {
@@ -153,7 +132,7 @@ export class ChatbotComponent implements OnInit {
 
   accionFinal(opcion: string) {
     if (opcion.includes('WhatsApp')) {
-      const msg = encodeURIComponent(`Hola Caleb, acabo de usar el chatbot. Proyecto: ${this.datos['proyecto']}`);
+      const msg = encodeURIComponent(`Hola Caleb, usé el asistente. Área: ${this.datos['empresa']}, proceso: ${this.datos['proceso']}`);
       window.open(`https://wa.me/51922307301?text=${msg}`, '_blank');
     } else if (opcion.includes('Nueva')) {
       this.mensajes = []; this.paso = 0; this.datos = {}; this.finalizado = false;

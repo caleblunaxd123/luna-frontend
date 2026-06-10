@@ -2,9 +2,12 @@
 
 <section class="page-hero">
   <div class="container">
-    <div class="label">Hablemos</div>
-    <h1>¿Tienes un proyecto? <span class="gradient-text">Cuéntanos</span></h1>
-    <p>Primera consulta gratis. Respuesta garantizada en menos de 24 horas.</p>
+    <div class="eyebrow"><span class="dot"></span> Diagnóstico gratuito</div>
+    <h1>Solicita tu <span class="gradient-text">Diagnóstico de Automatización</span></h1>
+    <p class="lead" style="margin:1.2rem auto 0;">
+      Analizamos tus procesos y te mostramos oportunidades reales de automatización con IA.
+      Sin costo y sin compromiso — respuesta en menos de 24 horas.
+    </p>
   </div>
 </section>
 
@@ -14,41 +17,40 @@
 
       <!-- Info lateral -->
       <div>
-        <h3>Canales de contacto</h3>
+        <h3>Canales directos</h3>
         <div class="info-cards">
-          <div class="info-card">
-            <div class="ic-icon purple">📧</div>
+          <div class="info-card glass">
+            <div class="ic-icon violet">📧</div>
             <div class="ic-body"><strong>Email</strong><span>calebluna41&#64;gmail.com</span></div>
           </div>
-          <div class="info-card">
+          <div class="info-card glass">
             <div class="ic-icon green">💬</div>
             <div class="ic-body"><strong>WhatsApp</strong><span>+51 922 307 301 — respuesta en minutos</span></div>
           </div>
-          <div class="info-card">
-            <div class="ic-icon blue">📍</div>
-            <div class="ic-body"><strong>Ubicación</strong><span>Lima, Perú 🇵🇪 — trabajo remoto LATAM</span></div>
+          <div class="info-card glass">
+            <div class="ic-icon cyan">📍</div>
+            <div class="ic-body"><strong>Ubicación</strong><span>Lima, Perú 🇵🇪 — trabajo remoto en LATAM</span></div>
           </div>
-          <div class="info-card">
-            <div class="ic-icon orange">🕐</div>
+          <div class="info-card glass">
+            <div class="ic-icon amber">🕐</div>
             <div class="ic-body"><strong>Horario</strong><span>Lun–Vie 9am–7pm (PET) · Urgencias 24h</span></div>
           </div>
         </div>
-        <div class="social-section">
-          <h4>Redes sociales</h4>
-          <div class="social-links">
-            <a href="https://www.linkedin.com/in/calebluna" target="_blank">in</a>
-            <a href="https://github.com/caleblunaxd123"    target="_blank">gh</a>
-            <a href="https://wa.me/51922307301"            target="_blank">wa</a>
-          </div>
+        <div class="promesa glass">
+          <h4>Qué incluye tu diagnóstico</h4>
+          <ul>
+            <li>Mapa de procesos automatizables</li>
+            <li>Oportunidades priorizadas por impacto</li>
+            <li>Estimación de horas y costos ahorrados</li>
+          </ul>
         </div>
       </div>
 
-      <!-- Formulario con Netlify Forms — envía email automático a calebluna41@gmail.com -->
-      <div class="contact-form">
+      <!-- Formulario Netlify Forms -->
+      <div class="contact-form glass">
         @if (!enviado) {
-          <h3>Cuéntanos tu proyecto</h3>
+          <h3>Cuéntanos sobre tu empresa</h3>
 
-          <!-- netlify + netlify-honeypot para spam protection -->
           <form name="contacto-luna" netlify netlify-honeypot="bot-field" (submit)="enviar($event)">
             <input type="hidden" name="form-name" value="contacto-luna"/>
             <p style="display:none"><input name="bot-field"/></p>
@@ -60,7 +62,7 @@
               </div>
               <div class="fg">
                 <label>Email *</label>
-                <input name="email" [(ngModel)]="form.email" type="email" placeholder="tu@email.com" required/>
+                <input name="email" [(ngModel)]="form.email" type="email" placeholder="tu@empresa.com" required/>
               </div>
             </div>
             <div class="form-row">
@@ -69,45 +71,43 @@
                 <input name="telefono" [(ngModel)]="form.telefono" placeholder="+51 922 307 301"/>
               </div>
               <div class="fg">
-                <label>Tipo de proyecto</label>
+                <label>¿Qué quieres resolver?</label>
                 <select name="tipo" [(ngModel)]="form.tipo">
                   <option value="">Selecciona...</option>
-                  <option>Sistema web a medida</option>
-                  <option>App móvil</option>
-                  <option>API / Backend</option>
-                  <option>Ecommerce</option>
-                  <option>Consultoría TI</option>
-                  <option>Template / Starter</option>
-                  <option>Otro</option>
+                  <option>Empleado Digital IA (ventas / soporte / cobranza)</option>
+                  <option>Automatización de procesos</option>
+                  <option>Aplicación inteligente (CRM / ERP / SaaS)</option>
+                  <option>Dashboard ejecutivo con IA</option>
+                  <option>No estoy seguro — quiero el diagnóstico</option>
                 </select>
               </div>
             </div>
             <div class="fg">
-              <label>Presupuesto aproximado</label>
+              <label>Tamaño de tu empresa</label>
               <select name="presupuesto" [(ngModel)]="form.presupuesto">
-                <option value="">No sé todavía</option>
-                <option>Menos de $300 USD</option>
-                <option>$300 - $800 USD</option>
-                <option>$800 - $2,000 USD</option>
-                <option>Más de $2,000 USD</option>
+                <option value="">Selecciona...</option>
+                <option>Emprendimiento / 1-5 personas</option>
+                <option>Pequeña empresa / 6-20</option>
+                <option>Mediana empresa / 21-100</option>
+                <option>Más de 100 personas</option>
               </select>
             </div>
             <div class="fg">
-              <label>Cuéntanos tu proyecto *</label>
+              <label>Describe el proceso que quieres automatizar *</label>
               <textarea name="mensaje" [(ngModel)]="form.mensaje"
-                placeholder="¿Qué necesitas? Describe brevemente tu idea o problema..." required></textarea>
+                placeholder="¿Qué tarea repetitiva consume más tiempo en tu equipo hoy?" required></textarea>
             </div>
             <button type="submit" class="btn btn-primary" style="width:100%" [disabled]="enviando">
-              {{ enviando ? 'Enviando...' : 'Enviar mensaje →' }}
+              {{ enviando ? 'Enviando...' : 'Solicitar Diagnóstico Gratuito →' }}
             </button>
           </form>
         } @else {
           <div class="form-success">
-            <div style="font-size:3rem;margin-bottom:1rem">🎉</div>
-            <p><strong>¡Mensaje recibido!</strong></p>
-            <p>Te escribiremos a <strong>{{ form.email }}</strong> en menos de 24 horas.</p>
-            <p style="margin-top:.5rem">¿Prefieres respuesta inmediata?</p>
-            <a href="https://wa.me/51922307301?text=Hola%20Caleb%2C%20acabo%20de%20enviar%20un%20formulario%20en%20la%20web"
+            <div style="font-size:3rem;margin-bottom:1rem">🚀</div>
+            <p><strong>¡Solicitud recibida!</strong></p>
+            <p>Te contactaremos en <strong>{{ form.email }}</strong> en menos de 24 horas con tu diagnóstico.</p>
+            <p style="margin-top:.5rem">¿Prefieres avanzar ahora mismo?</p>
+            <a href="https://wa.me/51922307301?text=Hola%20Caleb%2C%20acabo%20de%20solicitar%20un%20diagn%C3%B3stico%20de%20automatizaci%C3%B3n"
                target="_blank" class="btn btn-primary" style="margin-top:1.5rem;display:inline-flex">
               💬 WhatsApp ahora →
             </a>
