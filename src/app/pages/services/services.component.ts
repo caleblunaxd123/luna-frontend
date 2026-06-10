@@ -3,12 +3,13 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { HeaderComponent } from '../../shared/components/header.component';
 import { FooterComponent } from '../../footer/footer.component';
+import { LunaCoreComponent } from '../../shared/components/luna-core.component';
 import { RevealDirective } from '../../shared/reveal.directive';
 
 @Component({
   selector: 'app-services',
   standalone: true,
-  imports: [CommonModule, RouterLink, HeaderComponent, FooterComponent, RevealDirective],
+  imports: [CommonModule, RouterLink, HeaderComponent, FooterComponent, LunaCoreComponent, RevealDirective],
   templateUrl: './services.component.html',
   styleUrls: ['./services.component.scss']
 })

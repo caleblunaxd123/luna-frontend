@@ -3,6 +3,17 @@
 .page-hero h1 { max-width: 16ch; margin: 0 auto; }
 .page-hero .lead { margin-left: auto; margin-right: auto; }
 
+/* split hero with Luna Core */
+.page-hero-split { text-align: left; }
+.hero-split { display: grid; grid-template-columns: 1.1fr .9fr; gap: 2.5rem; align-items: center; }
+.page-hero-split h1 { max-width: none; margin: 0; }
+.page-hero-split .lead { margin: 1.2rem 0 0; }
+.hero-split-core { max-width: 360px; margin: 0 auto; }
+@media (max-width: 880px) {
+  .hero-split { grid-template-columns: 1fr; }
+  .hero-split-core { order: -1; max-width: 280px; }
+}
+
 /* Solution cards */
 .sol-card { padding: 2.1rem; }
 .sol-icon {
@@ -19,13 +30,12 @@
 .sol-features li::before { content: '✓'; position: absolute; left: 0; color: var(--cyan); font-weight: 700; }
 .sol-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
 
-/* Benefits */
-.beneficios-section { background: rgba(255,255,255,.012); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-.ben-card { padding: 1.7rem; border-radius: var(--radius); border: 1px solid var(--border); background: var(--surface); transition: border-color .3s, transform .3s; }
-.ben-card:hover { border-color: var(--border-2); transform: translateY(-4px); }
-.ben-icon { font-size: 1.7rem; margin-bottom: .9rem; }
-.ben-card h3 { font-size: 1.1rem; margin-bottom: .5rem; }
-.ben-card p { font-size: .92rem; }
+/* Benefits (light / breathing) */
+.ben-card { padding: 1.8rem; border-radius: var(--radius); border: 1px solid var(--light-border); background: var(--light-surface); box-shadow: var(--shadow-light); transition: transform .35s var(--ease), box-shadow .35s; }
+.ben-card:hover { transform: translateY(-5px); box-shadow: 0 28px 60px -24px rgba(20,32,80,.28); }
+.ben-icon { width: 50px; height: 50px; border-radius: 13px; display: grid; place-items: center; font-size: 1.5rem; margin-bottom: 1rem; background: #eef1fb; }
+.ben-card h3 { font-size: 1.1rem; margin-bottom: .5rem; color: var(--ink); }
+.ben-card p { font-size: .92rem; color: var(--ink-muted); }
 
 /* Process */
 .proceso-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
