@@ -1,7 +1,7 @@
-<app-header></app-header>
+<app-header [onDark]="true"></app-header>
 
 <!-- ═══════════════════════ HERO ═══════════════════════ -->
-<section class="hero">
+<section class="hero section-dark">
   <div class="container hero-inner">
     <div class="hero-text">
       <div class="eyebrow"><span class="dot"></span> Inteligencia que trabaja 24/7 · Latinoamérica</div>
@@ -52,7 +52,7 @@
 </section>
 
 <!-- ═══════════════════════ STATS ═══════════════════════ -->
-<section class="section-sm stats-band">
+<section class="section-sm stats-band section-tint">
   <div class="container grid-4">
     <div class="stat reveal" appReveal>
       <span class="stat-num"><span [appCountUp]="85" suffix="%"></span></span>
@@ -74,7 +74,7 @@
 </section>
 
 <!-- ═══════════════════════ LUNA CORE (marca) ═══════════════════════ -->
-<section class="section core-section" id="luna-core">
+<section class="section core-section section-dark" id="luna-core">
   <div class="container core-grid">
     <div class="core-visual reveal" appReveal>
       <app-luna-core></app-luna-core>
@@ -97,7 +97,7 @@
 </section>
 
 <!-- ═══════════════════════ LÍNEAS DE NEGOCIO ═══════════════════════ -->
-<section class="section" id="soluciones">
+<section class="section section-light" id="soluciones">
   <div class="container">
     <div class="section-head reveal" appReveal>
       <div class="eyebrow"><span class="dot"></span> Qué construimos</div>
@@ -120,7 +120,7 @@
 </section>
 
 <!-- ═══════════ ¿QUÉ PUEDE AUTOMATIZAR TU EMPRESA? ═══════════ -->
-<section class="section auto-section" id="automatizar">
+<section class="section auto-section section-tint" id="automatizar">
   <div class="container">
     <div class="section-head reveal" appReveal>
       <div class="eyebrow"><span class="dot"></span> Automatización empresarial</div>
@@ -156,7 +156,7 @@
 </section>
 
 <!-- ═══════════════════════ EMPLEADOS DIGITALES (productos) ═══════════════════════ -->
-<section class="section" id="empleados">
+<section class="section section-light" id="empleados">
   <div class="container">
     <div class="section-head reveal" appReveal>
       <div class="eyebrow"><span class="dot"></span> Empleados digitales</div>
@@ -201,7 +201,7 @@
 </section>
 
 <!-- ═══════════════════════ RESULTADOS (claro / respira) ═══════════════════════ -->
-<section class="section section-light resultados-section">
+<section class="section section-tint resultados-section">
   <div class="container">
     <div class="section-head reveal" appReveal>
       <div class="eyebrow"><span class="dot"></span> Impacto real</div>
@@ -221,7 +221,7 @@
 </section>
 
 <!-- ═══════════════════════ ACTIVIDAD NOCTURNA ═══════════════════════ -->
-<section class="section noche-section">
+<section class="section noche-section section-dark">
   <div class="noche-stars"></div>
   <div class="container">
     <div class="section-head reveal" appReveal>
@@ -242,7 +242,7 @@
 </section>
 
 <!-- ═══════════════════════ CASOS DE USO ═══════════════════════ -->
-<section class="section casos-section" id="casos">
+<section class="section casos-section section-light" id="casos">
   <div class="container">
     <div class="section-head reveal" appReveal>
       <div class="eyebrow"><span class="dot"></span> Casos de uso reales</div>
@@ -270,7 +270,7 @@
 </section>
 
 <!-- ═══════════════════════ POR QUÉ LUNA ═══════════════════════ -->
-<section class="section" id="por-que">
+<section class="section section-tint" id="por-que">
   <div class="container">
     <div class="section-head reveal" appReveal>
       <div class="eyebrow"><span class="dot"></span> Por qué Luna IT Solutions</div>
@@ -289,7 +289,7 @@
 </section>
 
 <!-- ═══════════════════════ PROCESO ═══════════════════════ -->
-<section class="section proceso-section">
+<section class="section proceso-section section-light">
   <div class="container">
     <div class="section-head reveal" appReveal>
       <div class="eyebrow"><span class="dot"></span> Cómo trabajamos</div>
@@ -310,7 +310,7 @@
 <!-- ═══════════════════════ CTA ═══════════════════════ -->
 <section class="cta-section">
   <div class="container">
-    <div class="cta-card glass reveal" appReveal>
+    <div class="cta-card glass section-dark reveal" appReveal>
       <div class="cta-glow"></div>
       <div class="cta-core"><app-luna-core [compact]="true"></app-luna-core></div>
       <div class="eyebrow"><span class="dot"></span> Diagnóstico gratuito</div>

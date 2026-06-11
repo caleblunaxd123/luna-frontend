@@ -1,4 +1,5 @@
-.page-hero { padding: 11rem 0 2.5rem; text-align: center; }
+.page-hero { padding: 11rem 0 2.5rem; text-align: center;
+  background: radial-gradient(54rem 26rem at 50% -18%, rgba(109,91,245,.12), transparent 70%); }
 .page-hero h1 { max-width: 18ch; margin: 0 auto; }
 .page-hero .lead { margin-left: auto; margin-right: auto; }
 
@@ -6,43 +7,45 @@
 .filtros { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; margin-bottom: 2.5rem; }
 .filtro {
   display: inline-flex; align-items: center; gap: .5rem;
-  background: var(--surface); border: 1px solid var(--border); color: var(--muted);
+  background: var(--ctx-surface); border: 1px solid var(--ctx-border); color: var(--ctx-muted);
   padding: .55rem 1.1rem; border-radius: 50px; font-size: .9rem; font-weight: 600;
-  font-family: inherit; cursor: pointer; transition: all .25s var(--ease);
+  font-family: inherit; cursor: pointer; transition: all .25s var(--ease); box-shadow: var(--shadow-xs);
 }
-.filtro:hover { color: #fff; border-color: var(--border-2); }
-.filtro.active { background: var(--grad); color: #fff; border-color: transparent; box-shadow: 0 10px 26px -10px rgba(124,108,255,.7); }
-.filtro .count { font-size: .72rem; background: rgba(0,0,0,.25); padding: .05rem .45rem; border-radius: 50px; }
+.filtro:hover { color: var(--ctx-head); border-color: var(--ctx-border-2); transform: translateY(-1px); }
+.filtro.active { background: var(--grad); color: #fff; border-color: transparent; box-shadow: 0 12px 26px -12px rgba(109,91,245,.6); }
+.filtro .count { font-size: .72rem; background: rgba(20,32,80,.08); padding: .05rem .45rem; border-radius: 50px; }
 .filtro.active .count { background: rgba(255,255,255,.25); }
 
-/* Caso card */
+/* Caso card (light) */
 .caso { padding: 1.7rem; display: flex; flex-direction: column; }
 .caso-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
-.caso-icon { width: 50px; height: 50px; border-radius: 14px; display: grid; place-items: center; font-size: 1.45rem; border: 1px solid var(--border); }
-.caso-icon[data-tint="violet"] { background: rgba(124,108,255,.14); box-shadow: 0 0 24px -10px var(--violet); }
-.caso-icon[data-tint="cyan"]   { background: rgba(34,211,238,.12);  box-shadow: 0 0 24px -10px var(--cyan); }
-.caso-icon[data-tint="pink"]   { background: rgba(217,70,239,.12);  box-shadow: 0 0 24px -10px var(--pink); }
-.caso-icon[data-tint="green"]  { background: rgba(16,185,129,.12);  box-shadow: 0 0 24px -10px #10b981; }
-.caso-icon[data-tint="amber"]  { background: rgba(245,158,11,.12);  box-shadow: 0 0 24px -10px #f59e0b; }
+.caso-icon { width: 50px; height: 50px; border-radius: 14px; display: grid; place-items: center; font-size: 1.45rem; border: 1px solid var(--ctx-border); }
+.caso-icon[data-tint="violet"] { background: rgba(109,91,245,.12); box-shadow: 0 12px 24px -14px var(--violet); }
+.caso-icon[data-tint="cyan"]   { background: rgba(21,200,224,.10); box-shadow: 0 12px 24px -14px var(--cyan); }
+.caso-icon[data-tint="pink"]   { background: rgba(192,132,252,.10); box-shadow: 0 12px 24px -14px var(--pink); }
+.caso-icon[data-tint="green"]  { background: rgba(16,185,129,.10); box-shadow: 0 12px 24px -14px #10b981; }
+.caso-icon[data-tint="amber"]  { background: rgba(245,158,11,.10); box-shadow: 0 12px 24px -14px #f59e0b; }
 .caso h3 { font-size: 1.12rem; margin-bottom: 1rem; }
 
-.caso-step { padding-left: 1rem; border-left: 2px solid var(--border); margin-bottom: .85rem; }
+.caso-step { padding-left: 1rem; border-left: 2px solid var(--ctx-border); margin-bottom: .85rem; }
 .caso-step span { display: block; font-size: .68rem; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; margin-bottom: .2rem; }
-.caso-step p { font-size: .85rem; color: #c4c4dc; }
-.caso-step.antes { border-color: rgba(239,68,68,.5); } .caso-step.antes span { color: #ff9d9d; }
-.caso-step.sol   { border-color: rgba(124,108,255,.6); } .caso-step.sol span { color: #b6acff; }
-.caso-step.res   { border-color: rgba(16,185,129,.6); } .caso-step.res span { color: #6ee7b7; }
+.caso-step p { font-size: .85rem; color: var(--ctx-text); }
+.caso-step.antes { border-color: rgba(239,68,68,.45); } .caso-step.antes span { color: #d3455a; }
+.caso-step.sol   { border-color: rgba(109,91,245,.55); } .caso-step.sol span { color: #5a47e6; }
+.caso-step.res   { border-color: rgba(16,185,129,.55); } .caso-step.res span { color: #0c8f63; }
 
-.caso-foot { margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border); }
+.caso-foot { margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--ctx-border); }
 .caso-metric { display: flex; align-items: baseline; gap: .5rem; margin-bottom: .7rem; }
 .caso-metric strong { font-family: 'Plus Jakarta Sans'; font-size: 1.6rem; font-weight: 800;
-  background: var(--grad-soft); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-.caso-metric span { font-size: .82rem; color: var(--muted); }
+  background: linear-gradient(120deg, var(--electric-2), var(--violet-2)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.caso-metric span { font-size: .82rem; color: var(--ctx-muted); }
 .caso-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
 
-/* CTA */
-.cta-section { padding: 3rem 0 7rem; }
-.cta-card { position: relative; text-align: center; padding: 4rem 2rem; overflow: hidden; }
-.cta-glow { position: absolute; inset: 0; z-index: 0; background: radial-gradient(40rem 20rem at 50% 0%, rgba(124,108,255,.25), transparent 70%); pointer-events: none; }
-.cta-card > * { position: relative; z-index: 1; }
+/* CTA (dark slab) */
+.cta-section { padding: 1rem 0 6rem; }
+.cta-card { position: relative; text-align: center; padding: 4.5rem 2rem; overflow: hidden; border-radius: var(--radius-lg);
+  background: var(--bg-dark); border: 1px solid rgba(255,255,255,.12); box-shadow: 0 40px 90px -40px rgba(20,20,60,.7); }
+.cta-glow { position: absolute; inset: 0; z-index: 0; background: radial-gradient(40rem 20rem at 50% 0%, rgba(139,125,255,.28), transparent 70%); pointer-events: none; }
+.cta-card > *:not(.cta-glow) { position: relative; z-index: 1; }
 .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+@media (max-width: 560px) { .cta-card { padding: 3rem 1.4rem; } }

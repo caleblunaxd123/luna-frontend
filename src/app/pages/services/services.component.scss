@@ -1,56 +1,58 @@
-/* shared page-hero (dark) */
+/* shared page-hero */
 .page-hero { padding: 11rem 0 3rem; text-align: center; position: relative; }
 .page-hero h1 { max-width: 16ch; margin: 0 auto; }
 .page-hero .lead { margin-left: auto; margin-right: auto; }
 
-/* split hero with Luna Core */
-.page-hero-split { text-align: left; }
+/* split hero with Luna Core (dark) */
+.page-hero-split { text-align: left; padding-bottom: 5rem; }
 .hero-split { display: grid; grid-template-columns: 1.1fr .9fr; gap: 2.5rem; align-items: center; }
 .page-hero-split h1 { max-width: none; margin: 0; }
 .page-hero-split .lead { margin: 1.2rem 0 0; }
 .hero-split-core { max-width: 360px; margin: 0 auto; }
 @media (max-width: 880px) {
   .hero-split { grid-template-columns: 1fr; }
-  .hero-split-core { order: -1; max-width: 280px; }
+  .hero-split-core { order: -1; max-width: 260px; }
 }
 
-/* Solution cards */
+/* Solution cards (light) */
 .sol-card { padding: 2.1rem; }
 .sol-icon {
   width: 60px; height: 60px; border-radius: 16px; display: grid; place-items: center;
-  font-size: 1.8rem; margin-bottom: 1.2rem; border: 1px solid var(--border);
+  font-size: 1.8rem; margin-bottom: 1.2rem; border: 1px solid var(--ctx-border);
 }
-.sol-icon[data-tint="violet"] { background: rgba(124,108,255,.14); box-shadow: 0 0 30px -10px var(--violet); }
-.sol-icon[data-tint="cyan"]   { background: rgba(34,211,238,.12);  box-shadow: 0 0 30px -10px var(--cyan); }
-.sol-icon[data-tint="pink"]   { background: rgba(217,70,239,.12);  box-shadow: 0 0 30px -10px var(--pink); }
-.sol-icon[data-tint="green"]  { background: rgba(16,185,129,.12);  box-shadow: 0 0 30px -10px #10b981; }
+.sol-icon[data-tint="violet"] { background: rgba(109,91,245,.12); box-shadow: 0 14px 30px -16px var(--violet); }
+.sol-icon[data-tint="cyan"]   { background: rgba(21,200,224,.10);  box-shadow: 0 14px 30px -16px var(--cyan); }
+.sol-icon[data-tint="pink"]   { background: rgba(192,132,252,.10); box-shadow: 0 14px 30px -16px var(--pink); }
+.sol-icon[data-tint="green"]  { background: rgba(16,185,129,.10);  box-shadow: 0 14px 30px -16px #10b981; }
 .sol-card h3 { margin-bottom: .6rem; font-size: 1.3rem; }
 .sol-features { margin: 1.2rem 0 1.3rem; display: grid; gap: .55rem; }
-.sol-features li { position: relative; padding-left: 1.5rem; font-size: .9rem; color: #c4c4dc; }
-.sol-features li::before { content: '✓'; position: absolute; left: 0; color: var(--cyan); font-weight: 700; }
+.sol-features li { position: relative; padding-left: 1.5rem; font-size: .9rem; color: var(--ctx-text); }
+.sol-features li::before { content: '✓'; position: absolute; left: 0; color: var(--cyan-2); font-weight: 700; }
 .sol-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
 
-/* Benefits (light / breathing) */
-.ben-card { padding: 1.8rem; border-radius: var(--radius); border: 1px solid var(--light-border); background: var(--light-surface); box-shadow: var(--shadow-light); transition: transform .35s var(--ease), box-shadow .35s; }
-.ben-card:hover { transform: translateY(-5px); box-shadow: 0 28px 60px -24px rgba(20,32,80,.28); }
+/* Benefits (light tint / breathing) */
+.ben-card { padding: 1.8rem; border-radius: var(--radius); border: 1px solid var(--ctx-border); background: var(--ctx-surface); box-shadow: var(--shadow-xs); transition: transform .35s var(--ease), box-shadow .35s; }
+.ben-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-card); }
 .ben-icon { width: 50px; height: 50px; border-radius: 13px; display: grid; place-items: center; font-size: 1.5rem; margin-bottom: 1rem; background: #eef1fb; }
 .ben-card h3 { font-size: 1.1rem; margin-bottom: .5rem; color: var(--ink); }
 .ben-card p { font-size: .92rem; color: var(--ink-muted); }
 
-/* Process */
+/* Process (light) */
 .proceso-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
-.proceso-step { padding: 1.7rem; border-radius: var(--radius); border: 1px solid var(--border); background: var(--surface); }
+.proceso-step { padding: 1.7rem; border-radius: var(--radius); border: 1px solid var(--ctx-border); background: var(--ctx-surface); box-shadow: var(--shadow-xs); position: relative; }
+.proceso-step::before { content: ''; position: absolute; top: 0; left: 1.7rem; right: 1.7rem; height: 2px; background: var(--grad-line); border-radius: 2px; opacity: .5; }
 .ps-num { font-family: 'Plus Jakarta Sans'; font-size: 2.4rem; font-weight: 800;
-  background: var(--grad-soft); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; display: block; margin-bottom: .6rem; }
+  background: linear-gradient(120deg, var(--electric-2), var(--violet-2)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; display: block; margin-bottom: .6rem; }
 .proceso-step h3 { font-size: 1.1rem; margin-bottom: .5rem; }
 .proceso-step p { font-size: .9rem; }
 
-/* CTA */
-.cta-section { padding: 3rem 0 7rem; }
-.cta-card { position: relative; text-align: center; padding: 4rem 2rem; overflow: hidden; }
-.cta-glow { position: absolute; inset: 0; z-index: 0; background: radial-gradient(40rem 20rem at 50% 0%, rgba(124,108,255,.25), transparent 70%); pointer-events: none; }
-.cta-card > * { position: relative; z-index: 1; }
+/* CTA (dark slab) */
+.cta-section { padding: 1rem 0 6rem; }
+.cta-card { position: relative; text-align: center; padding: 4.5rem 2rem; overflow: hidden; border-radius: var(--radius-lg);
+  background: var(--bg-dark); border: 1px solid rgba(255,255,255,.12); box-shadow: 0 40px 90px -40px rgba(20,20,60,.7); }
+.cta-glow { position: absolute; inset: 0; z-index: 0; background: radial-gradient(40rem 20rem at 50% 0%, rgba(139,125,255,.28), transparent 70%); pointer-events: none; }
+.cta-card > *:not(.cta-glow) { position: relative; z-index: 1; }
 .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
 
 @media (max-width: 980px) { .proceso-grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 560px) { .proceso-grid { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .proceso-grid { grid-template-columns: 1fr; } .cta-card { padding: 3rem 1.4rem; } }

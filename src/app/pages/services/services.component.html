@@ -1,6 +1,6 @@
-<app-header></app-header>
+<app-header [onDark]="true"></app-header>
 
-<section class="page-hero page-hero-split">
+<section class="page-hero page-hero-split section-dark">
   <div class="container hero-split">
     <div>
       <div class="eyebrow"><span class="dot"></span> Soluciones</div>
@@ -14,7 +14,7 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section section-light">
   <div class="container">
     <div class="grid-2">
       @for (s of soluciones; track s.titulo; let i = $index) {
@@ -34,7 +34,7 @@
   </div>
 </section>
 
-<section class="section section-light beneficios-section">
+<section class="section section-tint beneficios-section">
   <div class="container">
     <div class="section-head reveal" appReveal>
       <div class="eyebrow"><span class="dot"></span> Beneficios para tu empresa</div>
@@ -52,7 +52,7 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section section-light">
   <div class="container">
     <div class="section-head reveal" appReveal>
       <div class="eyebrow"><span class="dot"></span> Proceso de implementación</div>
@@ -72,7 +72,7 @@
 
 <section class="cta-section">
   <div class="container">
-    <div class="cta-card glass reveal" appReveal>
+    <div class="cta-card glass section-dark reveal" appReveal>
       <div class="cta-glow"></div>
       <h2>¿Por dónde empezamos?</h2>
       <p class="lead" style="margin:1rem auto 0;">Solicita tu diagnóstico de automatización gratuito y te mostramos las oportunidades reales en tu operación.</p>
