@@ -113,6 +113,13 @@
           <ul class="line-bullets">
             @for (b of l.bullets; track b) { <li>{{ b }}</li> }
           </ul>
+          <div class="line-demo">
+            @if (l.demo) {
+              <a [href]="l.demo" target="_blank" rel="noopener">⚡ {{ l.demoLabel || 'Probar demo en vivo' }}</a>
+            } @else {
+              <span class="soon">🔒 Demo próximamente</span>
+            }
+          </div>
         </article>
       }
     </div>

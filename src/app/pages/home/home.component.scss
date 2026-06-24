@@ -71,6 +71,10 @@
 .line-bullets { margin-top: 1.1rem; display: grid; gap: .5rem; }
 .line-bullets li { position: relative; padding-left: 1.4rem; font-size: .9rem; color: var(--ctx-text); }
 .line-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--violet); }
+.line-demo { margin-top: 1.4rem; }
+.line-demo a { display: inline-flex; align-items: center; gap: .5rem; padding: .65rem 1.25rem; border-radius: .75rem; font-size: .87rem; font-weight: 700; text-decoration: none; color: #fff; background: linear-gradient(120deg, var(--electric-2), var(--violet-2)); box-shadow: 0 10px 24px -10px var(--violet); transition: transform .18s ease, box-shadow .18s ease; }
+.line-demo a:hover { transform: translateY(-2px); box-shadow: 0 16px 32px -10px var(--violet); }
+.line-demo .soon { display: inline-flex; align-items: center; gap: .45rem; padding: .65rem 1.2rem; border-radius: .75rem; font-size: .83rem; font-weight: 600; color: var(--ctx-text); opacity: .55; background: rgba(139,125,255,.06); border: 1px dashed rgba(139,125,255,.3); }
 
 /* ════════════ AUTOMATIZAR (light tint) ════════════ */
 .auto-tabs { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; margin-bottom: 1.8rem; }

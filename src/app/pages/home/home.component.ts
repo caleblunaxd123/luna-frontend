@@ -38,16 +38,20 @@ export class HomeComponent {
   lineas = [
     { icon: '🤖', tint: 'violet', titulo: 'Empleados Digitales IA',
       desc: 'Agentes autónomos que atienden, venden, gestionan y dan seguimiento. 24/7, sin descanso.',
-      bullets: ['Ventas y atención', 'Soporte y cobranza', 'RRHH y administración'] },
+      bullets: ['Ventas y atención', 'Soporte y cobranza', 'Marketing y contenido'],
+      demo: 'https://reportes.lunaitsolution.com/demo-marketing.html', demoLabel: 'Probar Agente de Marketing' },
     { icon: '✨', tint: 'blue', titulo: 'Aplicaciones Inteligentes',
       desc: 'CRM, ERP y plataformas SaaS con IA integrada desde el diseño. Software que piensa.',
-      bullets: ['CRM / ERP con IA', 'Plataformas SaaS', 'Apps web y móviles'] },
+      bullets: ['CRM / ERP con IA', 'Plataformas SaaS', 'Apps web y móviles'],
+      demo: null, demoLabel: '' },
     { icon: '⚙️', tint: 'cyan', titulo: 'Automatización Empresarial',
       desc: 'Procesos completos de punta a punta. Lo que toma horas, se ejecuta en segundos.',
-      bullets: ['Correo → IA → Acción', 'WhatsApp → CRM → Seguimiento', 'Documentos → Reportes'] },
+      bullets: ['Correo → IA → Acción', 'WhatsApp → CRM → Seguimiento', 'Documentos → Reportes'],
+      demo: null, demoLabel: '' },
     { icon: '📊', tint: 'pink', titulo: 'Dashboards Ejecutivos',
       desc: 'Paneles que analizan indicadores, detectan riesgos y responden en lenguaje natural.',
-      bullets: ['Análisis de indicadores', 'Detección de riesgos', 'Recomendaciones por IA'] },
+      bullets: ['Análisis de indicadores', 'Detección de riesgos', 'Recomendaciones por IA'],
+      demo: null, demoLabel: '' },
   ];
 
   /* ¿Qué puede automatizar tu empresa? (interactivo) */
